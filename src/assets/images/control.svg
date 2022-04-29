@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="20px"
+   height="20px"
+   viewBox="0 0 20 20"
+   version="1.1"
+   id="svg14"
+   sodipodi:docname="control.svg"
+   inkscape:version="1.1.1 (3bf5ae0d25, 2021-09-20, custom)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs18">
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient2422">
+      <stop
+         style="stop-color:#cd0000;stop-opacity:1;"
+         offset="0"
+         id="stop2418" />
+      <stop
+         style="stop-color:#cd0000;stop-opacity:0;"
+         offset="1"
+         id="stop2420" />
+    </linearGradient>
+    <filter
+       inkscape:collect="always"
+       style="color-interpolation-filters:sRGB"
+       id="filter995"
+       x="-0.082173255"
+       y="-0.11872654"
+       width="1.1643465"
+       height="1.2374531">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="10.76294"
+         id="feGaussianBlur997" />
+    </filter>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient2422"
+       id="linearGradient2424"
+       x1="193.32587"
+       y1="348.20627"
+       x2="195.28218"
+       y2="184.76242"
+       gradientUnits="userSpaceOnUse" />
+  </defs>
+  <sodipodi:namedview
+     id="namedview16"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     showgrid="false"
+     inkscape:zoom="9.6175204"
+     inkscape:cx="11.021552"
+     inkscape:cy="-0.41590762"
+     inkscape:window-width="1280"
+     inkscape:window-height="730"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg14" />
+  <!-- Generator: Sketch 52.5 (67469) - http://www.bohemiancoding.com/sketch -->
+  <title
+     id="title2">control_camera</title>
+  <desc
+     id="desc4">Created with Sketch.</desc>
+  <path
+     style="opacity:0.840005;fill:url(#linearGradient2424);fill-opacity:1;stroke:none;stroke-width:17.9781;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;filter:url(#filter995)"
+     d="m 40.173907,137.45749 29.310215,176.64163 c 0,0 11.214818,36.79334 129.106488,39.34884 117.89167,2.5555 114.91167,-34.46267 114.91167,-34.46267 l 41.02034,-182.97852 z"
+     id="path960"
+     transform="matrix(0.05489694,0,0,0.05635887,-0.61299818,0.37548789)" />
+  <g
+     id="Icons"
+     stroke="none"
+     stroke-width="1.19985"
+     fill="none"
+     fill-rule="evenodd"
+     transform="matrix(0.83343456,0,0,0.83343456,1.5924264,-0.2119089)">
+    <g
+       id="Two-Tone"
+       transform="translate(-612,-908)"
+       style="stroke-width:1.19985">
+      <g
+         id="AV"
+         transform="translate(100,852)"
+         style="stroke-width:1.19985">
+        <g
+           id="Two-Tone-/-AV-/-control_camera"
+           transform="translate(510,54)"
+           style="stroke-width:1.19985">
+          <g
+             id="g8"
+             style="stroke-width:1.19985">
+            <polygon
+               id="Path"
+               points="24,24 0,24 0,0 24,0 "
+               style="stroke-width:1.19985" />
+            <path
+               d="M 7.3,13.77 5.54,15.54 2,12 5.54,8.46 7.3,10.23 5.54,12 Z M 15.54,18.46 12,22 8.46,18.46 10.23,16.7 12,18.46 13.77,16.7 Z M 18.46,15.54 16.7,13.77 18.46,12 16.7,10.23 18.46,8.46 22,12 Z M 12,5.54 10.23,7.3 8.46,5.54 12,2 15.54,5.54 13.77,7.3 Z M 12,15 c -1.656854,0 -3,-1.343146 -3,-3 0,-1.656854 1.343146,-3 3,-3 1.656854,0 3,1.343146 3,3 0,1.656854 -1.343146,3 -3,3 z"
+               id="🔹-Primary-Color"
+               fill="#000000"
+               style="stroke-width:1.43965" />
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

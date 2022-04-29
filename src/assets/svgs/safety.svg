@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generator: Adobe Illustrator 23.0.3, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+
+<svg
+   version="1.1"
+   id="Icons"
+   x="0px"
+   y="0px"
+   viewBox="0 0 32 32"
+   style="enable-background:new 0 0 32 32;"
+   xml:space="preserve"
+   sodipodi:docname="safety.svg"
+   inkscape:version="1.1.1 (3bf5ae0d25, 2021-09-20, custom)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"><defs
+   id="defs11"><linearGradient
+     inkscape:collect="always"
+     id="linearGradient1860"><stop
+       style="stop-color:#0056cd;stop-opacity:1;"
+       offset="0"
+       id="stop1856" /><stop
+       style="stop-color:#0056cd;stop-opacity:0;"
+       offset="1"
+       id="stop1858" /></linearGradient><filter
+     inkscape:collect="always"
+     style="color-interpolation-filters:sRGB"
+     id="filter995"
+     x="-0.082173255"
+     y="-0.11872654"
+     width="1.1643465"
+     height="1.2374531"><feGaussianBlur
+       inkscape:collect="always"
+       stdDeviation="10.76294"
+       id="feGaussianBlur997" /></filter><linearGradient
+     inkscape:collect="always"
+     xlink:href="#linearGradient1860"
+     id="linearGradient1862"
+     x1="201.49861"
+     y1="354.74075"
+     x2="205.295"
+     y2="149.4794"
+     gradientUnits="userSpaceOnUse" /></defs><sodipodi:namedview
+   id="namedview9"
+   pagecolor="#ffffff"
+   bordercolor="#666666"
+   borderopacity="1.0"
+   inkscape:pageshadow="2"
+   inkscape:pageopacity="0.0"
+   inkscape:pagecheckerboard="0"
+   showgrid="false"
+   inkscape:zoom="9.9367998"
+   inkscape:cx="11.472507"
+   inkscape:cy="21.787699"
+   inkscape:window-width="1280"
+   inkscape:window-height="730"
+   inkscape:window-x="0"
+   inkscape:window-y="0"
+   inkscape:window-maximized="1"
+   inkscape:current-layer="Icons" />
+<style
+   type="text/css"
+   id="style2">
+	.st0{fill:none;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+	.st1{fill:none;stroke:#000000;stroke-width:2;stroke-linejoin:round;stroke-miterlimit:10;}
+</style>
+<path
+   style="opacity:0.840005;fill:url(#linearGradient1862);fill-opacity:1;stroke:none;stroke-width:11.1634;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;filter:url(#filter995)"
+   d="m 40.173907,137.45749 29.310215,176.64163 c 0,0 11.214818,36.79334 129.106488,39.34884 117.89167,2.5555 114.91167,-34.46267 114.91167,-34.46267 l 41.02034,-182.97852 z"
+   id="path960"
+   transform="matrix(0.08750566,0,0,0.09169932,-1.0836199,-0.50944586)" /><path
+   class="st0"
+   d="M 25,6.7 C 21.6,6.7 18.4,5.3 16,3 13.6,5.3 10.4,6.7 7,6.7 5.6,6.7 4.3,6.4 3,6 3,20 8.5,25.6 16,29 23.5,25.6 29,20 29,6 27.7,6.4 26.4,6.7 25,6.7 Z"
+   id="path4"
+   transform="matrix(0.79168059,0,0,0.79168091,3.6152526,3.6415902)" />
+<polyline
+   class="st0"
+   points="12,16 15,19 21,13 "
+   id="polyline6"
+   transform="matrix(0.79168059,0,0,0.79168091,3.6152526,3.6415902)" />
+</svg>

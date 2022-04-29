@@ -1,0 +1,116 @@
+@font-face {
+	font-family: 'expletus-sans-bold';
+	src: local('expletus-sans'), url(./fonts/Gotham/GothamBold.ttf) format('truetype');
+	/* other formats include: 'woff2', 'truetype, 'opentype',
+                            'embedded-opentype', and 'svg' */
+}
+
+@font-face {
+	font-family: 'expletus-sans-regular';
+	src: local('expletus-sans'), url(./fonts/Gotham/GothamMedium.ttf) format('truetype');
+	/* other formats include: 'woff2', 'truetype, 'opentype',
+                            'embedded-opentype', and 'svg' */
+}
+
+@font-face {
+	font-family: 'expletus-sans-semibold';
+	src: local('expletus-sans'), url(./fonts/Gotham/GothamMedium.ttf) format('truetype');
+	/* other formats include: 'woff2', 'truetype, 'opentype',
+                            'embedded-opentype', and 'svg' */
+}
+
+@font-face {
+	font-family: 'IBMPlexMono-Light';
+	src: local('IBM_Plex_Mono'), url(./fonts/IBM_Plex_Mono/IBMPlexMono-Light.ttf) format('truetype');
+	/* other formats include: 'woff2', 'truetype, 'opentype',
+                            'embedded-opentype', and 'svg' */
+}
+
+@font-face {
+	font-family: 'IBMPlexMono-Medium';
+	src: local('IBM_Plex_Mono'), url(./fonts/IBM_Plex_Mono/IBMPlexMono-Medium.ttf) format('truetype');
+	/* other formats include: 'woff2', 'truetype, 'opentype',
+                            'embedded-opentype', and 'svg' */
+}
+
+@font-face {
+	font-family: 'IBMPlexMono-Regular';
+	src: local('IBM_Plex_Mono'), url(./fonts/IBM_Plex_Mono/IBMPlexMono-Regular.ttf) format('truetype');
+	/* other formats include: 'woff2', 'truetype, 'opentype',
+                            'embedded-opentype', and 'svg' */
+}
+
+* {
+	margin: 0;
+	box-sizing: border-box;
+	user-select: none;
+	-webkit-user-select: none;
+	-moz-user-select: -moz-none;
+	-ms-user-select: none;
+}
+
+h1 {
+	font-weight: bold;
+	color: #000;
+	font-size: 72px;
+	font-family: 'expletus-sans-regular';
+}
+
+h2 {
+	font-weight: bold;
+	color: #000;
+	font-size: 48px;
+	font-family: 'expletus-sans-regular';
+}
+
+h3 {
+	font-weight: bold;
+	color: #000;
+	font-size: 36px;
+	font-family: 'expletus-sans-regular';
+}
+
+footer p,
+footer ul {
+	font-family: 'expletus-sans-regular';
+}
+
+html {
+	scroll-behavior: smooth;
+	position: absolute;
+}
+
+body {
+	scroll-behavior: smooth;
+	margin: 0 auto;
+	font-family: 'expletus-sans-regular', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
+		'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	padding: 0 auto;
+	height: 100%;
+	width: 100vw;
+	background-color: #fff;
+	position: absolute;
+	overflow-x: hidden;
+}
+
+code {
+	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+h1 {
+	font-size: 2.5rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+}
+
+h3 {
+	font-size: 1.5rem;
+}
+
+a {
+	color: inherit;
+}
