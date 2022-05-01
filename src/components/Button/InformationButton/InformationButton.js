@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import theme from '../../Theme/theme';
 
 const StyledButton = styled.button`
-	color: ${theme.color.text.button};
+	color: #000;
 	font-weight: bold;
 	font-family: 'expletus-sans-regular';
 	border: 2px solid;

@@ -1,4 +1,4 @@
-import Logo from '../../../assets/svgs/boat_logo.png';
+import Logo from '../../../assets/images/vera.png';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Menu from './Menu/Menu';
@@ -35,8 +35,8 @@ const HeaderContentWrapper = styled.div`
 `;
 
 const LogoImg = styled.img`
-	padding: 2px;
-	width: 200px;
+	padding-top: 20px;
+	width: 140px;
 `;
 
 const MobileMenuWrapper = styled.div`
@@ -66,7 +66,7 @@ const NavHeader = () => {
 	return (
 		<NavHeaderDiv scrollY={scrollY}>
 			<HeaderContentWrapper>
-				<a href="https://vessel.finance/#/">
+				<a href="/">
 					<LogoImg src={Logo} alt="Logo" />
 				</a>
 				<Menu />

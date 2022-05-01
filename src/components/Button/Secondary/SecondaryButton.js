@@ -9,6 +9,7 @@ const StyledButton = styled.button`
 	margin-left: 20px;
 	transition: all 0.2s ease;
 	color: ${theme.color.text.button};
+	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 	font-weight: bold;
 	border: none;
 	&:hover {

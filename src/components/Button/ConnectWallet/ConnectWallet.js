@@ -11,6 +11,7 @@ const StyledButton = styled.button`
 	border-radius: 30px;
 	padding: 12px;
 	transition: all 0.2s ease;
+	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 	color: ${theme.color.text.button};
 	font-weight: bold;
 	font-family: 'expletus-sans-regular';
@@ -21,21 +22,6 @@ const StyledButton = styled.button`
 	}
 	@media ${bp.md} {
 		margin-bottom: 0px;
-	}
-`;
-
-const BalanceButton = styled.button`
-	background: rgba(30, 55, 82, 0.62);
-	border-radius: 12px;
-	padding: 12px;
-	margin-right: 0px;
-	font-family: 'IBMPlexMono-Light';
-	transition: all 0.2s ease;
-	color: ${theme.color.text.primary};
-	font-weight: bold;
-	border: none;
-	@media ${bp.md} {
-		margin-right: 20px;
 	}
 `;
 
@@ -66,7 +52,6 @@ const Dropdown = styled.div`
 	margin-top: 10px;
 	z-index: 2;
 	border-radius: 20px;
-	box-shadow: rgba(0, 0, 0, 0.75) 10px 15px 15px;
 	background: transparent;
 	@media ${bp.md} {
 		position: absolute;
@@ -102,17 +87,16 @@ const DisconnectWalletButton = styled.button`
 	color: #fe5e6c;
 	padding: 13px;
 	width: 180px;
-	background: rgba(20, 30, 30, 0.9);
+	border: 0px;
+	background: #f3f3f3;
 	backdrop-filter: blur(9px);
-	border: 1px solid rgba(0, 0, 0, 0.04);
-	box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14);
 	border-radius: 12px;
 	font-weight: 100;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	&:hover {
-		background: rgba(17, 27, 27, 0.9);
+		background: #d3d3d3;
 		cursor: pointer;
 	}
 	&:active {
@@ -123,7 +107,7 @@ const DisconnectWalletButton = styled.button`
 const BoxIcon = styled.img`
 	width: 20px;
 	margin-left: 20px;
-	filter: invert(1);
+	filter: invert(0);
 `;
 
 const BalanceIcon = styled.img`
@@ -207,7 +191,6 @@ const ConnectButton = ({ style }) => {
 				console.log('EMITTING EVENT');
 				window.dispatchEvent(new Event('storage'));
 				//console.log('event dispatched');
-				getAccountBalance(ethGetAccounts[0]);
 				setWalletIsActive(true);
 				//console.log('wallet connected');
 			}
@@ -223,18 +206,6 @@ const ConnectButton = ({ style }) => {
 		//console.log('OKAY WE ARE swapping account');
 		setDefaultAccount(newAccount);
 		localStorage.setItem('account', newAccount);
-		getAccountBalance(newAccount.toString());
-	};
-
-	// get balance of wallet account
-	const getAccountBalance = async account => {
-		try {
-			const balance = await contractMethods.balanceOf(account);
-			const sanitisedBalance = roundedToTwo(removePrecision(balance));
-			setUserBalance(sanitisedBalance);
-		} catch (error) {
-			disconnect();
-		}
 	};
 
 	const chainChangedHandler = () => {
@@ -244,6 +215,7 @@ const ConnectButton = ({ style }) => {
 
 	// disconnect wallet
 	const disconnect = async () => {
+		console.log('FOR SOME REASON IM DISCONNECTED');
 		setDefaultAccount('0x0');
 		setWalletIsActive(false);
 		localStorage.setItem('account', '');
@@ -292,10 +264,6 @@ const ConnectButton = ({ style }) => {
 			{walletIsActive ? (
 				<ButtonContainer>
 					<AccountButtons>
-						<BalanceButton>
-							<BalanceIcon src={boatSmall} />
-							{userBalance}
-						</BalanceButton>
 						<StyledButton style={style} onClick={() => handleDisconnectDropdown()}>
 							{defaultAccount.slice(0, 6) + '...' + defaultAccount.slice(-4)}
 						</StyledButton>

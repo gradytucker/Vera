@@ -25,12 +25,8 @@ const Menu = () => {
 		<MenuNav>
 			<NavItem link="/">Home</NavItem>
 			<NavItem link="/Requests">My Requests</NavItem>
-			<ExternalNavItem href="https://vessel.finance/#/About" target="_blank">
-				About
-			</ExternalNavItem>
-			<ExternalNavItem href="https://vessel.finance/#/Documentation" target="_blank">
-				Documentation
-			</ExternalNavItem>
+			<NavItem link="/Verifications">My Verifications</NavItem>
+			<NavItem link="/FAQ">FAQ</NavItem>
 			<ConnectButton />
 		</MenuNav>
 	);

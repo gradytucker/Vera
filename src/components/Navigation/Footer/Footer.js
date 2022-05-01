@@ -65,6 +65,9 @@ const SocialLinkImg = styled.img`
 	@media ${bp.sm} {
 		width: 30px;
 	}
+	&:hover {
+		cursor: pointer;
+	}
 `;
 
 const Copyright = styled.p`
@@ -94,22 +97,12 @@ const Footer = () => {
 			<FooterWrapper>
 				<FooterDiv>
 					<FooterSocials>
-						<SocialLinkImg src={twitter_img} alt="twitter" />
 						<SocialLinkImg
 							src={github_img}
 							alt="github"
 							onClick={e => {
 								e.preventDefault();
-								window.open('https://github.com/VesselFinance/', '_blank');
-							}}
-						/>
-						<SocialLinkImg src={discord_img} alt="discord" />
-						<SocialLinkImg
-							src={gitbook_img}
-							alt="gitbook"
-							onClick={e => {
-								e.preventDefault();
-								window.open('https://vessel-protocol.gitbook.io/vessel-whitepaper/', '_blank');
+								window.open('https://github.com/gradytucker/Vera/', '_blank');
 							}}
 						/>
 					</FooterSocials>

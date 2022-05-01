@@ -1,0 +1,62 @@
+@font-face {
+	font-family: 'expletus-sans-regular';
+	src: local('expletus-sans'), url(../../fonts/Gotham/GothamMedium.ttf) format('truetype');
+	/* other formats include: 'woff2', 'truetype, 'opentype',
+                            'embedded-opentype', and 'svg' */
+}
+
+.accordion {
+	border-radius: 30px;
+	border: 1px solid #f3f3f3;
+	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.accordion .accordion-item:first-child .title {
+	border-top-left-radius: 16px;
+	border-top-right-radius: 16px;
+}
+.accordion .accordion-item:last-child .title {
+	border-bottom-left-radius: 16px;
+	border-bottom-right-radius: 16px;
+}
+.accordion .accordion-item .title {
+	background-color: #f3f3f3;
+	color: black;
+	font-family: expletus-sans-regular;
+	cursor: pointer;
+	padding: 18px;
+	width: 100%;
+	font-size: 18px;
+	text-align: left;
+	border: none;
+	outline: none;
+	-webkit-transition: 0.4s;
+	-o-transition: 0.4s;
+	transition: 0.4s;
+}
+.accordion .accordion-item .title:after {
+	content: '\2795';
+	font-size: 13px;
+	color: #777;
+	float: right;
+	margin-left: 5px;
+}
+.accordion .accordion-item .panel {
+	max-height: 0;
+	-webkit-transition: max-height 0.15s ease-out;
+	-o-transition: max-height 0.15s ease-out;
+	transition: max-height 0.15s ease-out;
+	overflow: hidden;
+}
+.accordion .accordion-item.active .title {
+	background-color: #eee;
+}
+.accordion .accordion-item.active .title:after {
+	content: '\2796';
+}
+.accordion .accordion-item.active .panel {
+	max-height: 500px;
+	-webkit-transition: max-height 0.25s ease-in;
+	-o-transition: max-height 0.25s ease-in;
+	transition: max-height 0.25s ease-in;
+}
+/*# sourceMappingURL=index.css.map*/

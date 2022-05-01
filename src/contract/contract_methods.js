@@ -6,10 +6,6 @@ var cRPC = middleware_setup.RPC;
 var cAddr = middleware_setup.contractAddress;
 var cChainID = middleware_setup.chainID;
 
-var bountyAddr = '0x0000000000000000000000000000000000000002';
-var vaultAddr = '0x0000000000000000000000000000000000000001';
-var burnAddr = '0x000000000000000000000000000000000000dEaD';
-
 var totalTokens = () => c._tTotal().call();
 var rTotal = () => c._rTotal().call();
 var totalFees = () => c._tFeeTotal().call();
@@ -58,47 +54,5 @@ var getQuote = address => c._getTokenPrice(address).call();
 
 var getUserVotes = (address, index) => c.getUserVotes(address, index).call({ from: address });
 var updateEpoch = () => c.updateEpoch().call();
-export {
-	updateEpoch,
-	cABI,
-	cAddr,
-	cRPC,
-	cChainID,
-	totalTokens,
-	rTotal,
-	totalFees,
-	getCoinAddress,
-	getQuote,
-	getCoinVotes,
-	getUserVotes,
-	balanceOf,
-	nativecoin,
-	getBalancedRatio,
-	getImbalancedRatio,
-	getLastEpochPrices,
-	f,
-	u,
-	v,
-	b,
-	totalVotesCast,
-	lastEpochVoteCast,
-	lastVotesCast,
-	epochNumber,
-	epochLength,
-	theta,
-	theta_granularity,
-	theta_max,
-	lastEpochRebalance,
-	delta,
-	delta_1,
-	delta_2,
-	delta_t,
-	delta_w,
-	rebalance_case,
-	stablecoin,
-	maxVotesAllowed,
-	decimals,
-	burnAddr,
-	bountyAddr,
-	vaultAddr,
-};
+
+export { cABI, cAddr, cRPC, cChainID };

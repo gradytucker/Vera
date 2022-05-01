@@ -2,21 +2,15 @@ import styled from 'styled-components';
 import theme from '../../Theme/theme';
 import bp from '../../Theme/breakpoints';
 import Footer from '../../Navigation/Footer/Footer';
-import blueGlow from '../../../assets/images/BLUE_round.svg';
-import greenGlow from '../../../assets/images/GREEN_round.svg';
-import 'react-responsive-carousel/lib/styles/carousel.min.css'; // requires a loader
 import InformationButton from '../../Button/InformationButton/InformationButton';
-import PrimaryButton from '../../Button/Primary/PrimaryButton';
-import InformationButtonGreyed from '../../Button/InformationButton/InformationButtonGreyed';
-import Countdown from 'react-countdown';
+import SecondaryButton from '../../Button/Secondary/SecondaryButtonNoArrow';
+import { serviceLevelsJSON } from '../../../Data/VeraPriveleges';
+import noWalletFace from '../../../assets/images/connectWallet.png';
 import 'animate.css/animate.min.css';
-import { AnimationOnScroll } from 'react-animation-on-scroll';
-import lockIcon from '../../../assets/svgs/bountylock.svg';
-import unlockIcon from '../../../assets/svgs/bountyunlock.svg';
-import * as contractMethods from '../../../contract/contract_methods';
 import React from 'react';
 import Web3 from 'web3';
-import SkeletonEpoch from '../../skeletonLoads/skeletonEpoch';
+import RequestTicket from '../../DisplayComponents/RequestTicket';
+import smartCity from '../../../assets/images/smartCity.png';
 
 const PageWrapper = styled.div`
 	padding: 0 28px 64px 28px;
@@ -49,10 +43,36 @@ const DappCardWrapper = styled.div`
 	margin-bottom: 100px;
 `;
 
+const NewRequestWrapper = styled.div`
+	border-radius: 15px;
+	padding: 0 24px 0 24px;
+	width: 90%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	position: relative;
+	background-color: transparent;
+	margin: 0px auto;
+	margin-bottom: 100px;
+`;
+
 const PageHeader = styled.div`
 	width: 85%;
 	display: flex;
 	flex-direction: column;
+	justify-content: space-between;
+	padding-top: 40px;
+	margin: 0 auto;
+	align-items: space-between;
+	position: relative;
+	background-color: transparent;
+`;
+
+const SubPageHeader = styled.div`
+	width: 85%;
+	display: flex;
+	flex-direction: row;
 	justify-content: space-between;
 	padding-top: 40px;
 	margin: 0 auto;
@@ -114,215 +134,45 @@ const AboutSectionSubHeader = styled.div`
 	text-align: flex-start;
 	justify-content: flex-start;
 	justify-text: flex-start;
-	font-size: 16px;
+	font-size: 24px;
 	@media ${bp.sm} {
 		text-align: left;
-		font-size: 16px;
+		font-size: 24px;
 	}
 `;
 
-const BackgroundBlurLeft = styled.img`
-	left: -30%;
-	opacity: 30%;
-	position: absolute;
-	z-index: -1;
-	min-width: 800px;
-	min-height: 600px;
-	margin-top: -100px;
-	object-fit: fill;
-	@media ${bp.sm} {
-		left: -5%;
-		max-width: 100%;
-		margin-top: -100px;
-	}
-
-	@media ${bp.xl} {
-		left: -1%;
-		max-width: 100%;
-		margin-top: -100px;
-	}
-`;
-
-const BackgroundBlurRight = styled.img`
-	position: absolute;
-	z-index: -1;
-	opacity: 30%;
-	right: 0;
-	min-width: 800px;
-	min-height: 600px;
-	margin-top: -100px;
-	object-fit: fill;
-	@media ${bp.sm} {
-		right: 0;
-		max-width: 100%;
-		margin-top: -100px;
-	}
-
-	@media ${bp.xl} {
-		right: 0;
-		max-width: 100%;
-		margin-top: -100px;
-	}
-`;
-
-const UserBoxContent = styled.div`
+const NewReqUserBoxContent = styled.div`
 	display: flex;
 	flex-direction: column;
+	justify-content: space-between;
 	padding: 24px;
-	background: rgba(40, 50, 50, 0.7);
+	background: #f3f3f3;
 	backdrop-filter: blur(10px);
 	border-radius: 16px;
+	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 	margin-bottom: 20px;
 	color: ${theme.color.text.primary};
 	border: 0px solid rgba(255, 255, 255, 0.5);
+	height: 300px;
 	width: 88vw;
 	@media ${bp.sm} {
 		width: 100%;
+		height: 300px;
 		margin-left: 20px;
 		margin-right: 20px;
 	}
 `;
 
-const UserBoxDataBox = styled.div`
-	display: flex;
-	padding: 14px;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	background: rgba(155, 155, 155, 0.2);
-	backdrop-filter: blur(10px);
-	border-radius: 16px;
-	margin: 5px;
-	height: 90px;
-	font-size: 14px;
-`;
-
-const UserBoxDataBigNum = styled.h1`
-	font-size: 20px;
-	color: #ffffff;
-	height: 100%;
-	text-align: center;
-	@media ${bp.md} {
-		font-size: 30px;
-		color: #ffffff;
-	}
-`;
-
-const UserBoxDataCurrentRewardBigNum = styled.h1`
-	font-size: 22px;
-	color: #ffffff;
-	text-align: center;
-	height: 100%;
-	@media ${bp.sm} {
-		font-size: 22px;
-		color: #ffffff;
-	}
-	@media ${bp.md} {
-		font-size: 22px;
-		color: #ffffff;
-	}
-	@media ${bp.lg} {
-		font-size: 26px;
-		color: #ffffff;
-	}
-`;
-
-const UserBoxDataDeltasBigNum = styled.h1`
-	font-size: 22px;
-	color: #ffffff;
-	text-align: center;
-	height: 100%;
-	@media ${bp.sm} {
-		font-size: 22px;
-		color: #ffffff;
-	}
-	@media ${bp.md} {
-		font-size: 22px;
-		color: #ffffff;
-	}
-	@media ${bp.lg} {
-		font-size: 26px;
-		color: #ffffff;
-	}
-`;
-
-const UserBoxDataDeltasBigNumPos = styled.h1`
-	font-size: 22px;
-	color: #09b7b3;
-	text-align: center;
-	height: 100%;
-	@media ${bp.sm} {
-		font-size: 22px;
-		color: #09b7b3;
-	}
-	@media ${bp.md} {
-		font-size: 22px;
-		color: #09b7b3;
-	}
-	@media ${bp.lg} {
-		font-size: 26px;
-		color: #09b7b3;
-	}
-`;
-
-const UserBoxDataDeltasBigNumNeg = styled.h1`
-	font-size: 22px;
-	color: #fe7e8c;
-	text-align: center;
-	height: 100%;
-	@media ${bp.sm} {
-		font-size: 22px;
-		color: #fe7e8c;
-	}
-	@media ${bp.md} {
-		font-size: 22px;
-		color: #fe7e8c;
-	}
-	@media ${bp.lg} {
-		font-size: 26px;
-		color: #fe7e8c;
-	}
-`;
-
-const UserBoxDataSubtitle = styled.div`
-	display: flex;
-	just
-`;
-
-const UserBoxDataContainerTimer = styled.div`
-	display: flex;
-	flex-direction: row;
-	justify-content: center;
-	align-items: center;
-	height: 25.5vh;
-`;
-
-const UserBoxDataContainer = styled.div`
-	display: flex;
-	flex-direction: row;
-	justify-content: center;
-	align-items: center;
-	height: 22vh;
-`;
-
-const UserBoxDeltaContainer = styled.div`
-	display: flex;
-	flex-direction: row;
-	justify-content: center;
-	align-items: center;
-	color: #fff;
-	margin-top: -80px;
-`;
-
-const BoxHeader = styled.h1`
+const NewReqBoxHeader = styled.h1`
 	color: ${theme.color.text.primary};
 	margin-bottom: 16px;
 	text-align: flex-start;
-	font-size: 18px;
+	padding-top: 10px;
+	font-size: 24px;
 	display: flex;
 	justify-content: space-between;
 	padding-bottom: 4px;
-	border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+
 	@media ${bp.md} {
 		color: ${theme.color.text.primary};
 		margin-bottom: 16px;
@@ -331,67 +181,78 @@ const BoxHeader = styled.h1`
 		display: flex;
 		justify-content: space-between;
 		padding-bottom: 4px;
-		border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+	}
+`;
+const NewReqBoxSubtitle = styled.div`
+	color: ${theme.color.text.primary};
+
+	text-align: flex-start;
+	font-size: 16px;
+	display: flex;
+	justify-content: space-between;
+	padding-bottom: 4px;
+
+	@media ${bp.md} {
+		color: ${theme.color.text.primary};
+		text-align: flex-start;
+		font-size: 16px;
+		display: flex;
+		justify-content: space-between;
+		padding-bottom: 4px;
 	}
 `;
 
-const UserBoxCountdownContent = styled.div`
-	display: flex;
-	flex-direction: column;
-	margin-top: 20px;
-	justify-content: center;
-	align-items: center;
-	font-size: 12px;
-	color: ${theme.color.text.secondary};
-	width: 90%;
-	@media ${bp.sm} {
-		width: 100%;
+const AddressInput = styled.input`
+	font-size: 16px;
+	padding: 8px 10px 8px 10px;
+	margin: 10px;
+	font-family: 'expletus-sans-regular';
+	background: white;
+	border: none;
+	border-radius: 30px;
+	::placeholder {
+		font-family: 'expletus-sans-regular';
+		font-size: 16px;
 	}
 `;
 
-const CountdownContentContainer = styled.div`
-	display: flex;
-	margin-top: 20px;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-`;
-
-const CountdownContainer = styled.div`
-	margin-top: 20px;
+const RequestForm = styled.form`
 	display: flex;
 	flex-direction: row;
+	justify-content: space-between;
+	height: 40px;
 `;
 
-const ClaimStatusLocked = styled.h1`
-	font-size: 14px;
-	color: #fe5e6c;
-	font-weight: 100;
+const NoWalletIMG = styled.img`
+	width: 54%;
+	margin-bottom: 20px;
 `;
 
-const ClaimStatusUnlocked = styled.h1`
-	font-size: 14px;
-	color: #53f4d2;
-	font-weight: 100;
-`;
-
-const BountyLockIcon = styled.img`
-	width: 30px;
-	filter: invert(1);
+const NoWalletMessage = styled.div`
+	color: #939393;
 	display: flex;
-	margin-bottom: 10px;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	justify-text: center;
+	opacity: 70%;
+	margin: 0 auto;
+	padding-top: 10vh;
 `;
 
 const EpochPage = () => {
+	const [newRequestToggled, setNewRequestToggled] = React.useState(false);
+	const [newRequestAddress, setNewRequestAddress] = React.useState('');
 	const [walletConnectedMode, setWalletConnectedMode] = React.useState(false);
-	const [isLoaded, setIsLoaded] = React.useState(false);
-	const [timeToNextEpoch, setTimeToNextEpoch] = React.useState(0);
-	const [bountyValue, setBountyValue] = React.useState(0);
-	var [countDownKey, setCountDownKey] = React.useState(0);
-	const [deltaT, setDeltaT] = React.useState(0);
-	const [deltaW, setDeltaW] = React.useState(0);
-	const [bountyLockStatus, setBountyLockStatus] = React.useState(true);
 	const [walletHasSwappedThisSession, setWalletHasSwappedThisSession] = React.useState(0);
+	const [currentAccount, setCurrentAccount] = React.useState('');
+	const [permittedData, setPermittedData] = React.useState(Array(40).fill(0));
+	const [serviceLevel, setServiceLevel] = React.useState('');
+	const [newRequests, setNewRequests] = React.useState([
+		['0x4E...4865', 'prescriptions'],
+		['0x2A...9261', 'prescriptions'],
+		['0x9F...1213', 'prescriptions'],
+	]);
 
 	/* listen to event emitted from change in local storage, set Wallet Connect Mode for 
 	appropriate component rerender */
@@ -409,8 +270,8 @@ const EpochPage = () => {
 
 	// initialise getting lastEpochBalance time for calculating time to next epoch rebalance, and then get the value of the bounty reward.
 	React.useEffect(() => {
-		const getContractData = async () => {
-			const getAndSetVesselContractData = async () => {
+		const getUserData = async () => {
+			const getAndSetUserData = async () => {
 				try {
 					if (!window.ethereum || localStorage.getItem('account') === '') {
 						console.log('no account found');
@@ -419,265 +280,130 @@ const EpochPage = () => {
 					const web3 = new Web3(window.ethereum);
 					web3.eth.setProvider(Web3.givenProvider);
 					const accounts = await window.ethereum.request({ method: 'eth_accounts' });
-					accounts !== null ? setWalletConnectedMode(true) : setWalletConnectedMode(false);
+					if (accounts !== null && accounts.length !== 0) {
+						setWalletConnectedMode(true);
+						setCurrentAccount(accounts[0]);
+						console.log(accounts);
+					} else {
+						setWalletConnectedMode(false);
+					}
 
 					// if wallet not connected, just pull contract data
 				} catch (err) {
 					console.log(err.message);
 				}
-
-				const EpochData = await Promise.all([
-					contractMethods.lastEpochRebalance(), //[0]
-					contractMethods.epochLength(), //[1]
-					contractMethods.balanceOf(contractMethods.bountyAddr), //[2]
-
-					// addresses [3]
-					Promise.all(
-						[...Array(20)].map((e, i) => {
-							return contractMethods.getCoinAddress(i);
-						}),
-					),
-
-					//last epoch prices [4]
-					Promise.all(
-						[...Array(21)].map((e, i) => {
-							return contractMethods.getLastEpochPrices(i);
-						}),
-					),
-
-					// balancedratio [5]
-					Promise.all(
-						[...Array(20)].map((e, i) => {
-							return contractMethods.getBalancedRatio(i);
-						}),
-					),
-				]);
-
-				const priceOfVSL = await contractMethods.getQuote(contractMethods.cAddr);
-
-				const RTP = await Promise.all(
-					EpochData[3].map((e, i) => {
-						return contractMethods.getQuote(EpochData[3][i]);
-					}),
-				);
-
-				var ethTime = EpochData[0];
-				var lengthOfEpoch = EpochData[1];
-				const contractBal = EpochData[2];
-
-				const deltaTval = ((Number(priceOfVSL) - Number(EpochData[4][20])) / Number(EpochData[4][20])) * 100;
-				const deltaWval = EpochData[3]
-					.map((e, i) => {
-						return ((EpochData[5][i] / 10 ** 16) * (RTP[i] - EpochData[4][i])) / EpochData[4][i];
-					})
-					.reduce((a, b) => Number(a) + Number(b), 0);
-
-				// get lastEpochBalance time for calculating time to next epoch rebalance.
-				var jsTime = Date.now() / 1000;
-				const timeToGoInSeconds = parseInt(ethTime) + parseInt(lengthOfEpoch) - parseInt(jsTime);
-				if (timeToGoInSeconds > 0) {
-					setBountyLockStatus(true);
-					setTimeToNextEpoch(timeToGoInSeconds * 1000);
-				} else {
-					setBountyLockStatus(false);
-					setTimeToNextEpoch(0);
-				}
-				setCountDownKey(countDownKey++);
-
-				// get bounty reward value
-				setBountyValue(contractBal / 10 ** 18 > 1000000 ? 1000000 : contractBal / 10 ** 18);
-				// set delta values
-				setDeltaT(deltaTval);
-				setDeltaW(deltaWval);
 			};
-			await getAndSetVesselContractData();
-			setIsLoaded(true);
+			await getAndSetUserData();
 		};
 
-		getContractData();
+		getUserData();
 	}, [walletConnectedMode, walletHasSwappedThisSession]);
 
-	const sleep = milliseconds => {
-		return new Promise(resolve => setTimeout(resolve, milliseconds));
+	const handleSubmit = () => {
+		alert(`Submitting Name ${newRequestAddress}`);
 	};
 
-	// function for triggering epoch rebalance
-	const HandleTriggerRebalance = async () => {
-		try {
-			if (!window.ethereum || localStorage.getItem('account') === '') {
-				throw new Error('No crypto wallet found. Please install it.');
-			}
+	console.log(walletConnectedMode);
 
-			const web3 = new Web3(window.ethereum);
-			web3.eth.setProvider(Web3.givenProvider);
-			const contract = new web3.eth.Contract(contractMethods.cABI);
-			const accounts = await window.ethereum.request({ method: 'eth_accounts' });
-			const account = accounts[0];
-			const contractAddress = contractMethods.cAddr;
-
-			const transactionParameters = {
-				from: account,
-				to: contractAddress,
-				gasPrice: web3.eth.gasPrice,
-				gasLimit: (await web3.eth.getBlock('latest')).gasLimit,
-				data: contract.methods._rebalanceEpoch().encodeABI(),
-			};
-
-			const txHash = await window.ethereum.request({
-				method: 'eth_sendTransaction',
-				params: [transactionParameters],
-			});
-
-			let transactionReceipt = null;
-			while ((transactionReceipt = null)) {
-				transactionReceipt = await web3.eth.getTransactionReceipt(txHash);
-				await sleep(1000);
-			}
-			if (transactionReceipt.status === true) {
-				setBountyLockStatus(true);
-				console.log('epoch successfully reset. rerendering...');
-			} else {
-				console.log('transaction failed, not rerendering.');
-			}
-		} catch (err) {
-			console.log(err.message);
-		}
-	};
-
-	const Completionist = () => <span>Epoch can be reset now.</span>;
-	const countDownRenderer = ({ days, hours, minutes, seconds, completed }) => {
-		if (completed) {
-			return <Completionist />;
-		} else {
-			// Render a countdown
-			return (
-				<span>
-					{' '}
-					<CountdownContentContainer>
-						<CountdownContainer>
-							<UserBoxDataBox>
-								<UserBoxDataBigNum>{days}</UserBoxDataBigNum>
-								<UserBoxDataSubtitle>days</UserBoxDataSubtitle>
-							</UserBoxDataBox>
-							<UserBoxDataBox>
-								<UserBoxDataBigNum>{hours}</UserBoxDataBigNum>
-								<UserBoxDataSubtitle>hours</UserBoxDataSubtitle>
-							</UserBoxDataBox>
-							<UserBoxDataBox>
-								<UserBoxDataBigNum>{minutes}</UserBoxDataBigNum>
-								<UserBoxDataSubtitle>minutes</UserBoxDataSubtitle>
-							</UserBoxDataBox>
-							<UserBoxDataBox>
-								<UserBoxDataBigNum>{seconds}</UserBoxDataBigNum>
-								<UserBoxDataSubtitle>seconds</UserBoxDataSubtitle>
-							</UserBoxDataBox>
-						</CountdownContainer>
-						<UserBoxCountdownContent>Until epoch can be reset.</UserBoxCountdownContent>
-					</CountdownContentContainer>
-				</span>
-			);
-		}
-	};
-
-	return !isLoaded ? (
-		<SkeletonEpoch />
-	) : (
+	return walletConnectedMode === true && newRequests.length !== 0 ? (
 		<>
 			<PageWrapper>
 				<PageHeader>
-					<AboutSectionHeader>Epoch</AboutSectionHeader>
-					<AboutSectionSubHeader>
-						Every 7 days the epoch is reset, triggering a rebalance of the synthetic wrapper.
-					</AboutSectionSubHeader>
+					<AboutSectionHeader>My Requests</AboutSectionHeader>
 				</PageHeader>
-
-				<BackgroundBlurLeft src={blueGlow} alt="blue Glow" />
-
-				<DappCardWrapper>
-					<AssetAllocationContainer>
-						<UserAndGraphContainer>
-							<UserBoxContent>
-								<BoxHeader>Reset</BoxHeader>
-								<UserBoxDataContainerTimer>
-									<Countdown
-										autoStart={true}
-										date={Date.now() + parseInt(timeToNextEpoch)}
-										renderer={countDownRenderer}
-										key={Date.now()}
-									/>
-								</UserBoxDataContainerTimer>
-							</UserBoxContent>
-							<UserBoxContent>
-								<BoxHeader>Collect Bounty</BoxHeader>
-								<UserBoxDataContainer>
-									<UserBoxDataBox>
-										<UserBoxDataCurrentRewardBigNum>{bountyValue}</UserBoxDataCurrentRewardBigNum>
-										<UserBoxDataSubtitle> VSL reward</UserBoxDataSubtitle>
-									</UserBoxDataBox>
-									<UserBoxDataBox>
-										<UserBoxDataBigNum>
-											{' '}
-											{bountyLockStatus === false ? (
-												<BountyLockIcon src={unlockIcon} />
-											) : (
-												<BountyLockIcon src={lockIcon} />
-											)}
-										</UserBoxDataBigNum>
-										<UserBoxDataSubtitle>
-											status: &nbsp;
-											{bountyLockStatus === false ? (
-												<ClaimStatusUnlocked>unlocked</ClaimStatusUnlocked>
-											) : (
-												<ClaimStatusLocked>locked</ClaimStatusLocked>
-											)}
-										</UserBoxDataSubtitle>
-									</UserBoxDataBox>
-								</UserBoxDataContainer>
-								{bountyLockStatus === false && walletConnectedMode === true ? (
-									<PrimaryButton
-										onClick={() => {
-											HandleTriggerRebalance();
-										}}
-									>
-										Reset Epoch & Collect
-									</PrimaryButton>
-								) : walletConnectedMode === false ? (
-									<InformationButtonGreyed>Connect wallet to reset</InformationButtonGreyed>
-								) : bountyLockStatus === true ? (
-									<InformationButtonGreyed>Reset Epoch & Collect</InformationButtonGreyed>
-								) : null}
-							</UserBoxContent>
-						</UserAndGraphContainer>
-					</AssetAllocationContainer>
-
-					<BackgroundBlurRight src={greenGlow} alt="blue Glow" />
-				</DappCardWrapper>
-				<UserBoxDeltaContainer>
-					<UserBoxDataBox>
-						{deltaT < 0 ? (
-							<UserBoxDataDeltasBigNumNeg>{Number(deltaT).toFixed(2)}%</UserBoxDataDeltasBigNumNeg>
-						) : deltaT > 0 ? (
-							<UserBoxDataDeltasBigNumPos>{Number(deltaT).toFixed(2)}%</UserBoxDataDeltasBigNumPos>
-						) : deltaT <= 0 && deltaT >= 0 ? (
-							<UserBoxDataDeltasBigNum>{Number(deltaT).toFixed(2)}%</UserBoxDataDeltasBigNum>
-						) : null}
-						<UserBoxDataSubtitle> Change in token</UserBoxDataSubtitle>
-					</UserBoxDataBox>
-					<UserBoxDataBox>
-						{deltaW < 0 ? (
-							<UserBoxDataDeltasBigNumNeg>{Number(deltaW).toFixed(2)}%</UserBoxDataDeltasBigNumNeg>
-						) : deltaW > 0 ? (
-							<UserBoxDataDeltasBigNumPos>{Number(deltaW).toFixed(2)}%</UserBoxDataDeltasBigNumPos>
-						) : deltaW <= 0 && deltaW >= 0 ? (
-							<UserBoxDataDeltasBigNum>{Number(deltaW).toFixed(2)}%</UserBoxDataDeltasBigNum>
-						) : null}
-						<UserBoxDataSubtitle> Change in wrapper</UserBoxDataSubtitle>
-					</UserBoxDataBox>
-				</UserBoxDeltaContainer>
+				{newRequestToggled === false ? (
+					<DappCardWrapper>
+						<SubPageHeader>
+							<AboutSectionSubHeader>Pending</AboutSectionSubHeader>
+							<SecondaryButton
+								onClick={() => {
+									setNewRequestToggled(true);
+								}}
+							>
+								+
+							</SecondaryButton>
+						</SubPageHeader>
+						<AssetAllocationContainer>
+							<RequestTicket tickets={newRequests} />
+						</AssetAllocationContainer>
+					</DappCardWrapper>
+				) : (
+					<NewRequestWrapper>
+						<SubPageHeader>
+							<AboutSectionSubHeader
+								style={{ cursor: 'pointer' }}
+								onClick={() => {
+									setNewRequestToggled(false);
+								}}
+							>
+								{'🡠 Back'}
+							</AboutSectionSubHeader>
+						</SubPageHeader>
+						<AssetAllocationContainer>
+							<UserAndGraphContainer>
+								<NewReqUserBoxContent>
+									<NewReqBoxHeader>New Request</NewReqBoxHeader>
+									<NewReqBoxSubtitle>
+										as a Policeman, you will recieve information regarding:
+									</NewReqBoxSubtitle>
+									<p>-police records</p>
+									<RequestForm>
+										<label>
+											Address:
+											<AddressInput
+												type="text"
+												value={newRequestAddress}
+												placeholder={'enter an address'}
+												onChange={e => setNewRequestAddress(e.target.value)}
+											/>
+										</label>
+										<InformationButton onClick={() => handleSubmit()}>
+											Send Request
+										</InformationButton>
+									</RequestForm>
+								</NewReqUserBoxContent>
+							</UserAndGraphContainer>
+						</AssetAllocationContainer>
+					</NewRequestWrapper>
+				)}
 			</PageWrapper>
 			<Footer />
 		</>
-	);
+	) : walletConnectedMode === true && newRequests.length === 0 ? (
+		<>
+			<PageWrapper>
+				<PageHeader>
+					<AboutSectionHeader>My Requests</AboutSectionHeader>
+				</PageHeader>
+				<DappCardWrapper>
+					<AssetAllocationContainer>
+						<NoWalletMessage>
+							<NoWalletIMG src={smartCity} />
+							You have no pending requests right now!
+						</NoWalletMessage>
+					</AssetAllocationContainer>
+				</DappCardWrapper>
+			</PageWrapper>
+			<Footer />
+		</>
+	) : walletConnectedMode === false ? (
+		<>
+			<PageWrapper>
+				<PageHeader>
+					<AboutSectionHeader>My Requests</AboutSectionHeader>
+				</PageHeader>
+				<DappCardWrapper>
+					<AssetAllocationContainer>
+						<NoWalletMessage>
+							<NoWalletIMG src={noWalletFace} />
+							Please connect your wallet to view your requests
+						</NoWalletMessage>
+					</AssetAllocationContainer>
+				</DappCardWrapper>
+			</PageWrapper>
+			<Footer />
+		</>
+	) : null;
 };
 
 export default EpochPage;

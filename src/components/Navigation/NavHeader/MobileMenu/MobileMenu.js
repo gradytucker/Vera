@@ -7,7 +7,7 @@ import 'react-slidedown/lib/slidedown.css';
 import bp from '../../../Theme/breakpoints';
 
 const StyledNav = styled.nav`
-	background: ${theme.color.background.secondary};
+	background: #d3d3d3;
 	position: fixed;
 	padding-bottom: 5px;
 	top: 10px;
@@ -20,16 +20,16 @@ const StyledNav = styled.nav`
 	padding-top: 40px;
 	border-radius: 20px;
 	border: 1px solid #ffffff33;
-	box-shadow: rgba(0, 0, 0, 0.65) -10px 15px 15px;
+	box-shadow: rgba(0, 0, 0, 0.25) -10px 15px 15px;
 	@media ${bp.md} {
 		display: none;
 	}
 `;
 
 const Divider = styled.hr`
-	border-top: 1px #111111;
+	border-top: 2px black;
 	width: 100%;
-	opacity: 30%;
+	opacity: 100%;
 `;
 
 const HamburgerButton = styled.button`
@@ -55,16 +55,16 @@ const HamburgerButton = styled.button`
 const XBar1 = styled.span`
 	width: 2px;
 	height: 18px;
-	border: 1px solid white;
-	background-color: white;
+	border: 1px solid black;
+	background-color: black;
 	transform: rotate(45deg) translateX(-0.1em) translateY(0.1em);
 `;
 
 const XBar2 = styled.span`
 	width: 2px;
 	height: 18px;
-	border: 1px solid white;
-	background-color: white;
+	border: 1px solid black;
+	background-color: black;
 	transform: rotate(-45deg);
 `;
 
@@ -91,30 +91,20 @@ const MobileMenu = ({ toggleMobileMenu }) => {
 				<XBar2 />
 			</HamburgerButton>
 			<NavItemMobile link="/" toggle={toggleMobileMenu} exact={true}>
-				Vote
+				Home
 			</NavItemMobile>
 			<Divider />
-			<NavItemMobile link="/Epoch" toggle={toggleMobileMenu} exact={true}>
-				Epoch
+			<NavItemMobile link="/Requests" toggle={toggleMobileMenu} exact={true}>
+				My Requests
 			</NavItemMobile>
 			<Divider />
-			<ExternalNavItemMobile
-				href="https://vessel.finance/#/About"
-				target="_blank"
-				toggle={toggleMobileMenu}
-				exact={true}
-			>
-				About
-			</ExternalNavItemMobile>
+			<NavItemMobile link="/Verifications" toggle={toggleMobileMenu} exact={true}>
+				My Verifications
+			</NavItemMobile>
 			<Divider />
-			<ExternalNavItemMobile
-				href="https://vessel.finance/#/Documentation"
-				target="_blank"
-				toggle={toggleMobileMenu}
-				exact={true}
-			>
-				Documentation
-			</ExternalNavItemMobile>
+			<NavItemMobile link="/FAQ" toggle={toggleMobileMenu} exact={true}>
+				FAQ
+			</NavItemMobile>
 			<Divider />
 			<ButtonContainer>
 				<ConnectButton />

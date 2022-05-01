@@ -20,6 +20,7 @@ import 'animate.css/animate.min.css';
 import { AnimationOnScroll } from 'react-animation-on-scroll';
 import ScrollToTop from 'react-scroll-to-top';
 import { useHistory } from 'react-router';
+import { Link } from 'react-router-dom';
 
 const PageWrapper = styled.div`
 	padding: 0 10px 64px 10px;
@@ -362,25 +363,12 @@ const HomePage = () => {
 										<HeroPara>for smart city living and modern digital needs</HeroPara>
 									</AnimationOnScroll>
 									<ButtonContainer>
-										<PrimaryButton
-											onClick={e => {
-												e.preventDefault();
-												window.open('http://app.vessel.finance/#/', '_blank');
-											}}
-										>
-											My Requests
-										</PrimaryButton>
-										<SecondaryButton
-											onClick={e => {
-												e.preventDefault();
-												window.open(
-													'https://pancake.kiemtienonline360.com/#/swap?outputCurrency=0x00f2967e9bC4Def83cD87407678D0C6035c19813',
-													'_blank',
-												);
-											}}
-										>
-											About
-										</SecondaryButton>
+										<Link to="/Verifications">
+											<PrimaryButton>My Verifications</PrimaryButton>
+										</Link>
+										<Link to="/FAQ">
+											<SecondaryButton>FAQ</SecondaryButton>
+										</Link>
 									</ButtonContainer>
 								</HeroTextWrapper>
 							</HeroWrapper>
