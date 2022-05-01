@@ -1,27 +1,29 @@
 @font-face {
 	font-family: 'expletus-sans-light';
-	src: local('expletus-sans'), url(./fonts/Gotham/GothamLight.ttf) format('truetype');
+	src: local('expletus-sans'), url(./fonts/Gotham/Nunito-VariableFont_wght.ttf) format('truetype');
+	font-weight: 300;
 	/* other formats include: 'woff2', 'truetype, 'opentype',
                             'embedded-opentype', and 'svg' */
 }
 
 @font-face {
 	font-family: 'expletus-sans-bold';
-	src: local('expletus-sans'), url(./fonts/Gotham/GothamBold.ttf) format('truetype');
+	src: local('expletus-sans'), url(./fonts/Gotham/Nunito-VariableFont_wght.ttf) format('truetype');
+	font-weight: bolder;
 	/* other formats include: 'woff2', 'truetype, 'opentype',
                             'embedded-opentype', and 'svg' */
 }
 
 @font-face {
 	font-family: 'expletus-sans-regular';
-	src: local('expletus-sans'), url(./fonts/Gotham/GothamMedium.ttf) format('truetype');
-	/* other formats include: 'woff2', 'truetype, 'opentype',
-                            'embedded-opentype', and 'svg' */
+	src: local('expletus-sans'), url(./fonts/Gotham/Nunito-VariableFont_wght.ttf) format('truetype');
+	font-weight: bold;
 }
 
 @font-face {
 	font-family: 'expletus-sans-semibold';
-	src: local('expletus-sans'), url(./fonts/Gotham/GothamMedium.ttf) format('truetype');
+	src: local('expletus-sans'), url(./fonts/Gotham/Nunito-VariableFont_wght.ttf) format('truetype');
+	font-weight: bold;
 	/* other formats include: 'woff2', 'truetype, 'opentype',
                             'embedded-opentype', and 'svg' */
 }
@@ -74,6 +76,13 @@ h3 {
 	font-weight: bold;
 	color: #000;
 	font-size: 36px;
+	font-family: 'expletus-sans-regular';
+}
+
+p {
+	font-weight: bold;
+	color: #000;
+	font-size: 14px;
 	font-family: 'expletus-sans-regular';
 }
 
