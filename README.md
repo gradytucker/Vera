@@ -1,5 +1,6 @@
 <img src="https://github.com/gradytucker/Vera/blob/main/src/assets/images/vera.png" width="300" >
-# Vera: A secure digital fabric for smart city living and modern digital needs
+
+# Vera - a secure digital fabric for smart city living and modern digital needs
 
 ## UN World Innovation Day Hackathon
 - Blockchain for good is the targeted theme.
