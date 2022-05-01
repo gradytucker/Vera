@@ -125,30 +125,30 @@ const AboutSectionSubHeader = styled.div`
 
 const Faq1 = () => (
 	<p style={{ padding: '18px' }}>
-		Vera is a secure digital fabric for smart city living and modern digital needs. It is a blockchain protocol will
-		allow ubiquitous access to real life functionality and data such as pharmacy scripts, taxes, insurance,
+		Vera is a secure digital fabric for smart city living and modern digital needs. It is a blockchain protocol that
+		will allow ubiquitous access to real life functionality and data such as pharmacy scripts, taxes, insurance,
 		identification, transport, welfare, police checks and records, COVID vaccination reports, etc. while preserving
-		the least exposure principle and full privacy.
+		the lease exposure principle and full privacy.
 	</p>
 );
 
 const Faq2 = () => (
 	<p style={{ padding: '18px' }}>
-		The problem that Vera solves is two fold. firstly, it solves the problem of least exposure when it comes to
-		personal information and data for real life scenarios, but implementing a Zero Knowledge Proof procedure for
+		The problem that Vera solves is two-fold. Firstly, it solves the problem of least exposure when it comes to
+		personal information and data for real life scenarios, but implementing a zero-knowledge proof procedure for
 		accessing personal information.
 	</p>
 );
 
 const Faq3 = () => (
 	<p style={{ padding: '18px' }}>
-		Vera works by implementing Zero Knowledge Proof procedures on a blockchain environment. All data is encrypted on
-		chain with a public key for each user. Vera stores a list of availbale verifiers in a whitelist. When a verifier
-		requests information, they query the user's address. As a governing body limits the access that the verifier
-		has, they will only recieve information that is pertinent to their role or occupation. Upon the user accepting
-		the information request, the data on chain is decrypted with the uyser's private key signed, the requesting
-		address is verified in the whitelist, and the output result is emitted encrypted with a timestamp, which can
-		then be verified with the verifier's private key querying the blockchain.
+		Vera works by implementing zero-knowledge proof procedures on a blockchain environment. All data is encrypted
+		on-chain with a public key for each user. Vera stores a list of available verifiers in a whitelist. When a
+		verifier requests information, they query the user’s address. As a governing body limits the access that the
+		verifier has, they will only receive information that is pertinent to their role or occupation. Upon the user
+		accepting the information request, the data on-chain is decrypted with the user’s private key signed, the
+		requesting address is verified in the whitelist, and the output result is emitted encrypted with a timestamp,
+		which can then be verified with the verifier’s private key querying the blockchain.
 	</p>
 );
 

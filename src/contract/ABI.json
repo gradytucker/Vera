@@ -1,49 +1,18 @@
 [
-	{
-		"inputs": [],
-		"stateMutability": "nonpayable",
-		"type": "constructor"
-	},
+	{ "inputs": [], "stateMutability": "nonpayable", "type": "constructor" },
 	{
 		"anonymous": false,
-		"inputs": [
-			{
-				"indexed": false,
-				"internalType": "bytes32",
-				"name": "computedHash",
-				"type": "bytes32"
-			}
-		],
+		"inputs": [{ "indexed": false, "internalType": "bytes32", "name": "computedHash", "type": "bytes32" }],
 		"name": "VeraVerification",
 		"type": "event"
 	},
 	{
 		"inputs": [
-			{
-				"internalType": "address",
-				"name": "veraUser",
-				"type": "address"
-			},
-			{
-				"internalType": "bytes",
-				"name": "encryptedWaterBill",
-				"type": "bytes"
-			},
-			{
-				"internalType": "bytes",
-				"name": "encryptedGasBill",
-				"type": "bytes"
-			},
-			{
-				"internalType": "bytes",
-				"name": "encryptedInternetBill",
-				"type": "bytes"
-			},
-			{
-				"internalType": "bytes",
-				"name": "encryptedPhoneBill",
-				"type": "bytes"
-			}
+			{ "internalType": "address", "name": "veraUser", "type": "address" },
+			{ "internalType": "bytes", "name": "encryptedWaterBill", "type": "bytes" },
+			{ "internalType": "bytes", "name": "encryptedGasBill", "type": "bytes" },
+			{ "internalType": "bytes", "name": "encryptedInternetBill", "type": "bytes" },
+			{ "internalType": "bytes", "name": "encryptedPhoneBill", "type": "bytes" }
 		],
 		"name": "addBillInfo",
 		"outputs": [],
@@ -52,16 +21,8 @@
 	},
 	{
 		"inputs": [
-			{
-				"internalType": "address",
-				"name": "veraUser",
-				"type": "address"
-			},
-			{
-				"internalType": "bytes",
-				"name": "encryptedCOVIDReport",
-				"type": "bytes"
-			}
+			{ "internalType": "address", "name": "veraUser", "type": "address" },
+			{ "internalType": "bytes", "name": "encryptedCOVIDReport", "type": "bytes" }
 		],
 		"name": "addCOVIDReport",
 		"outputs": [],
@@ -70,16 +31,8 @@
 	},
 	{
 		"inputs": [
-			{
-				"internalType": "address",
-				"name": "veraUser",
-				"type": "address"
-			},
-			{
-				"internalType": "bytes",
-				"name": "encryptedInsuranceInfo",
-				"type": "bytes"
-			}
+			{ "internalType": "address", "name": "veraUser", "type": "address" },
+			{ "internalType": "bytes", "name": "encryptedInsuranceInfo", "type": "bytes" }
 		],
 		"name": "addInsuranceInformation",
 		"outputs": [],
@@ -88,16 +41,8 @@
 	},
 	{
 		"inputs": [
-			{
-				"internalType": "address",
-				"name": "veraUser",
-				"type": "address"
-			},
-			{
-				"internalType": "bytes",
-				"name": "encryptedLicenseInfo",
-				"type": "bytes"
-			}
+			{ "internalType": "address", "name": "veraUser", "type": "address" },
+			{ "internalType": "bytes", "name": "encryptedLicenseInfo", "type": "bytes" }
 		],
 		"name": "addLicenceOrPassport",
 		"outputs": [],
@@ -106,16 +51,8 @@
 	},
 	{
 		"inputs": [
-			{
-				"internalType": "address",
-				"name": "veraUser",
-				"type": "address"
-			},
-			{
-				"internalType": "bytes",
-				"name": "encryptedScript",
-				"type": "bytes"
-			}
+			{ "internalType": "address", "name": "veraUser", "type": "address" },
+			{ "internalType": "bytes", "name": "encryptedScript", "type": "bytes" }
 		],
 		"name": "addPharmacyScripts",
 		"outputs": [],
@@ -124,21 +61,9 @@
 	},
 	{
 		"inputs": [
-			{
-				"internalType": "address",
-				"name": "veraUser",
-				"type": "address"
-			},
-			{
-				"internalType": "bytes",
-				"name": "encryptedTaxesPaidInfo",
-				"type": "bytes"
-			},
-			{
-				"internalType": "bytes",
-				"name": "encryptedTaxesOutstandingInfo",
-				"type": "bytes"
-			}
+			{ "internalType": "address", "name": "veraUser", "type": "address" },
+			{ "internalType": "bytes", "name": "encryptedTaxesPaidInfo", "type": "bytes" },
+			{ "internalType": "bytes", "name": "encryptedTaxesOutstandingInfo", "type": "bytes" }
 		],
 		"name": "addTaxationInformation",
 		"outputs": [],
@@ -147,21 +72,9 @@
 	},
 	{
 		"inputs": [
-			{
-				"internalType": "address",
-				"name": "veraUser",
-				"type": "address"
-			},
-			{
-				"internalType": "bytes",
-				"name": "encryptedMetroBalance",
-				"type": "bytes"
-			},
-			{
-				"internalType": "bytes",
-				"name": "encryptedRoadTollBalance",
-				"type": "bytes"
-			}
+			{ "internalType": "address", "name": "veraUser", "type": "address" },
+			{ "internalType": "bytes", "name": "encryptedMetroBalance", "type": "bytes" },
+			{ "internalType": "bytes", "name": "encryptedRoadTollBalance", "type": "bytes" }
 		],
 		"name": "addTransportInfo",
 		"outputs": [],
@@ -170,16 +83,8 @@
 	},
 	{
 		"inputs": [
-			{
-				"internalType": "address",
-				"name": "veraUser",
-				"type": "address"
-			},
-			{
-				"internalType": "bytes",
-				"name": "encryptedAllergyStatus",
-				"type": "bytes"
-			}
+			{ "internalType": "address", "name": "veraUser", "type": "address" },
+			{ "internalType": "bytes", "name": "encryptedAllergyStatus", "type": "bytes" }
 		],
 		"name": "addWelfareAllergy",
 		"outputs": [],
@@ -188,16 +93,8 @@
 	},
 	{
 		"inputs": [
-			{
-				"internalType": "address",
-				"name": "veraUser",
-				"type": "address"
-			},
-			{
-				"internalType": "bytes",
-				"name": "encryptedBloodType",
-				"type": "bytes"
-			}
+			{ "internalType": "address", "name": "veraUser", "type": "address" },
+			{ "internalType": "bytes", "name": "encryptedBloodType", "type": "bytes" }
 		],
 		"name": "addWelfareBloodtype",
 		"outputs": [],
@@ -206,16 +103,8 @@
 	},
 	{
 		"inputs": [
-			{
-				"internalType": "address",
-				"name": "veraUser",
-				"type": "address"
-			},
-			{
-				"internalType": "bytes",
-				"name": "encryptedVitalConditionStatus",
-				"type": "bytes"
-			}
+			{ "internalType": "address", "name": "veraUser", "type": "address" },
+			{ "internalType": "bytes", "name": "encryptedVitalConditionStatus", "type": "bytes" }
 		],
 		"name": "addWelfareVitalCondition",
 		"outputs": [],
@@ -223,60 +112,24 @@
 		"type": "function"
 	},
 	{
-		"inputs": [
-			{
-				"internalType": "bytes32",
-				"name": "_bytes32",
-				"type": "bytes32"
-			}
-		],
+		"inputs": [{ "internalType": "bytes32", "name": "_bytes32", "type": "bytes32" }],
 		"name": "bytes32ToString",
-		"outputs": [
-			{
-				"internalType": "string",
-				"name": "",
-				"type": "string"
-			}
-		],
+		"outputs": [{ "internalType": "string", "name": "", "type": "string" }],
 		"stateMutability": "pure",
 		"type": "function"
 	},
 	{
-		"inputs": [
-			{
-				"internalType": "bytes",
-				"name": "byteCode",
-				"type": "bytes"
-			}
-		],
+		"inputs": [{ "internalType": "bytes", "name": "byteCode", "type": "bytes" }],
 		"name": "bytesToString",
-		"outputs": [
-			{
-				"internalType": "string",
-				"name": "stringData",
-				"type": "string"
-			}
-		],
+		"outputs": [{ "internalType": "string", "name": "stringData", "type": "string" }],
 		"stateMutability": "pure",
 		"type": "function"
 	},
 	{
 		"inputs": [
-			{
-				"internalType": "address",
-				"name": "verifier",
-				"type": "address"
-			},
-			{
-				"internalType": "int256",
-				"name": "index",
-				"type": "int256"
-			},
-			{
-				"internalType": "bool",
-				"name": "newVal",
-				"type": "bool"
-			}
+			{ "internalType": "address", "name": "verifier", "type": "address" },
+			{ "internalType": "uint256", "name": "index", "type": "uint256" },
+			{ "internalType": "bool", "name": "newVal", "type": "bool" }
 		],
 		"name": "changeVerifierPermissions",
 		"outputs": [],
@@ -285,26 +138,20 @@
 	},
 	{
 		"inputs": [
-			{
-				"internalType": "bytes",
-				"name": "key",
-				"type": "bytes"
-			},
-			{
-				"internalType": "address",
-				"name": "verifierAddress",
-				"type": "address"
-			},
-			{
-				"internalType": "string",
-				"name": "timestamp",
-				"type": "string"
-			},
-			{
-				"internalType": "string",
-				"name": "nonce",
-				"type": "string"
-			}
+			{ "internalType": "address", "name": "verifier", "type": "address" },
+			{ "internalType": "uint256[30]", "name": "permissionBits", "type": "uint256[30]" }
+		],
+		"name": "changeVerifierPermissionsMultiple",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{ "internalType": "bytes", "name": "key", "type": "bytes" },
+			{ "internalType": "address", "name": "verifierAddress", "type": "address" },
+			{ "internalType": "string", "name": "timestamp", "type": "string" },
+			{ "internalType": "string", "name": "nonce", "type": "string" }
 		],
 		"name": "computeVerification",
 		"outputs": [],
@@ -313,88 +160,38 @@
 	},
 	{
 		"inputs": [
-			{
-				"internalType": "bytes",
-				"name": "source",
-				"type": "bytes"
-			},
-			{
-				"internalType": "bytes",
-				"name": "key",
-				"type": "bytes"
-			}
+			{ "internalType": "bytes", "name": "source", "type": "bytes" },
+			{ "internalType": "bytes", "name": "key", "type": "bytes" }
 		],
 		"name": "decryptBytesToString",
-		"outputs": [
-			{
-				"internalType": "string",
-				"name": "",
-				"type": "string"
-			}
-		],
+		"outputs": [{ "internalType": "string", "name": "", "type": "string" }],
 		"stateMutability": "pure",
 		"type": "function"
 	},
 	{
 		"inputs": [
-			{
-				"internalType": "bytes",
-				"name": "data",
-				"type": "bytes"
-			},
-			{
-				"internalType": "bytes",
-				"name": "key",
-				"type": "bytes"
-			}
+			{ "internalType": "bytes", "name": "data", "type": "bytes" },
+			{ "internalType": "bytes", "name": "key", "type": "bytes" }
 		],
 		"name": "encryptDecryptBytes",
-		"outputs": [
-			{
-				"internalType": "bytes",
-				"name": "result",
-				"type": "bytes"
-			}
-		],
+		"outputs": [{ "internalType": "bytes", "name": "result", "type": "bytes" }],
 		"stateMutability": "pure",
 		"type": "function"
 	},
 	{
 		"inputs": [
-			{
-				"internalType": "string",
-				"name": "source",
-				"type": "string"
-			},
-			{
-				"internalType": "bytes",
-				"name": "key",
-				"type": "bytes"
-			}
+			{ "internalType": "string", "name": "source", "type": "string" },
+			{ "internalType": "bytes", "name": "key", "type": "bytes" }
 		],
 		"name": "encryptStringToBytes",
-		"outputs": [
-			{
-				"internalType": "bytes",
-				"name": "",
-				"type": "bytes"
-			}
-		],
+		"outputs": [{ "internalType": "bytes", "name": "", "type": "bytes" }],
 		"stateMutability": "pure",
 		"type": "function"
 	},
 	{
 		"inputs": [
-			{
-				"internalType": "address",
-				"name": "veraUser",
-				"type": "address"
-			},
-			{
-				"internalType": "bytes",
-				"name": "encryptedPoliceRecordInfo",
-				"type": "bytes"
-			}
+			{ "internalType": "address", "name": "veraUser", "type": "address" },
+			{ "internalType": "bytes", "name": "encryptedPoliceRecordInfo", "type": "bytes" }
 		],
 		"name": "modifyPoliceRecords",
 		"outputs": [],
@@ -403,41 +200,13 @@
 	},
 	{
 		"inputs": [
-			{
-				"internalType": "address",
-				"name": "userAddress",
-				"type": "address"
-			},
-			{
-				"internalType": "bytes",
-				"name": "encryptedName",
-				"type": "bytes"
-			},
-			{
-				"internalType": "bytes",
-				"name": "encryptedSurname",
-				"type": "bytes"
-			},
-			{
-				"internalType": "bytes",
-				"name": "encryptedAge",
-				"type": "bytes"
-			},
-			{
-				"internalType": "bytes",
-				"name": "encryptedNationality",
-				"type": "bytes"
-			},
-			{
-				"internalType": "bytes",
-				"name": "encryptedTitle",
-				"type": "bytes"
-			},
-			{
-				"internalType": "bytes",
-				"name": "encryptedGender",
-				"type": "bytes"
-			}
+			{ "internalType": "address", "name": "userAddress", "type": "address" },
+			{ "internalType": "bytes", "name": "encryptedName", "type": "bytes" },
+			{ "internalType": "bytes", "name": "encryptedSurname", "type": "bytes" },
+			{ "internalType": "bytes", "name": "encryptedAge", "type": "bytes" },
+			{ "internalType": "bytes", "name": "encryptedNationality", "type": "bytes" },
+			{ "internalType": "bytes", "name": "encryptedTitle", "type": "bytes" },
+			{ "internalType": "bytes", "name": "encryptedGender", "type": "bytes" }
 		],
 		"name": "registerUser",
 		"outputs": [],
@@ -445,78 +214,34 @@
 		"type": "function"
 	},
 	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "verifier",
-				"type": "address"
-			}
-		],
+		"inputs": [{ "internalType": "address", "name": "verifier", "type": "address" }],
 		"name": "revokeVerifier",
 		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"
 	},
 	{
-		"inputs": [
-			{
-				"internalType": "string",
-				"name": "source",
-				"type": "string"
-			}
-		],
+		"inputs": [{ "internalType": "string", "name": "source", "type": "string" }],
 		"name": "stringToBytes",
-		"outputs": [
-			{
-				"internalType": "bytes32",
-				"name": "result",
-				"type": "bytes32"
-			}
-		],
+		"outputs": [{ "internalType": "bytes32", "name": "result", "type": "bytes32" }],
 		"stateMutability": "pure",
 		"type": "function"
 	},
 	{
 		"inputs": [
-			{
-				"internalType": "string",
-				"name": "str",
-				"type": "string"
-			},
-			{
-				"internalType": "uint256",
-				"name": "startIndex",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "endIndex",
-				"type": "uint256"
-			}
+			{ "internalType": "string", "name": "str", "type": "string" },
+			{ "internalType": "uint256", "name": "startIndex", "type": "uint256" },
+			{ "internalType": "uint256", "name": "endIndex", "type": "uint256" }
 		],
 		"name": "substring",
-		"outputs": [
-			{
-				"internalType": "string",
-				"name": "",
-				"type": "string"
-			}
-		],
+		"outputs": [{ "internalType": "string", "name": "", "type": "string" }],
 		"stateMutability": "pure",
 		"type": "function"
 	},
 	{
 		"inputs": [
-			{
-				"internalType": "address",
-				"name": "a",
-				"type": "address"
-			},
-			{
-				"internalType": "bool",
-				"name": "b",
-				"type": "bool"
-			}
+			{ "internalType": "address", "name": "a", "type": "address" },
+			{ "internalType": "bool", "name": "b", "type": "bool" }
 		],
 		"name": "switchDeveloperAccess",
 		"outputs": [],

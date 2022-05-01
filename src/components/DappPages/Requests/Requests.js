@@ -300,7 +300,13 @@ const EpochPage = () => {
 	}, [walletConnectedMode, walletHasSwappedThisSession]);
 
 	const handleSubmit = () => {
-		alert(`Submitting Name ${newRequestAddress}`);
+		const web3 = new Web3(window.ethereum);
+		let result = web3.utils.isAddress(newRequestAddress);
+		if (result !== true) {
+			alert('Please enter a valid address');
+		} else {
+			const toAddress = newRequestAddress; // Address of the recipient
+		}
 	};
 
 	console.log(walletConnectedMode);
