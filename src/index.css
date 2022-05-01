@@ -9,7 +9,7 @@
 @font-face {
 	font-family: 'expletus-sans-bold';
 	src: local('expletus-sans'), url(./fonts/Gotham/Nunito-VariableFont_wght.ttf) format('truetype');
-	font-weight: bolder;
+	font-weight: 900;
 	/* other formats include: 'woff2', 'truetype, 'opentype',
                             'embedded-opentype', and 'svg' */
 }
@@ -62,7 +62,7 @@ h1 {
 	font-weight: bold;
 	color: #000;
 	font-size: 72px;
-	font-family: 'expletus-sans-regular';
+	font-family: 'expletus-sans-bold';
 }
 
 h2 {
