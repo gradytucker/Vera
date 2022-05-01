@@ -136,18 +136,16 @@ const NoWalletMessage = styled.div`
 	opacity: 70%;
 	margin: 0 auto;
 	padding-top: 10vh;
+	font-family: 'expletus-sans-regular';
 `;
 
 const EpochPage = () => {
+	const [isLoaded, setIsLoaded] = React.useState(false);
 	const [walletConnectedMode, setWalletConnectedMode] = React.useState(false);
 	const [currentAccount, setCurrentAccount] = React.useState('');
 	const [walletHasSwappedThisSession, setWalletHasSwappedThisSession] = React.useState(0);
-	const [newVerifications, setNewVerifications] = React.useState([
-		['Priceline Pharmacy', 'prescriptions'],
-		['Myki public transport', 'public transport'],
-		['Liquorland', 'identity'],
-		['Liquorland', 'identity'],
-	]);
+	const [newVerifications, setNewVerifications] = React.useState([]);
+	const [acceptHandled, setAcceptHandled] = React.useState(0);
 
 	/* listen to event emitted from change in local storage, set Wallet Connect Mode for 
 	appropriate component rerender */
@@ -176,9 +174,15 @@ const EpochPage = () => {
 					web3.eth.setProvider(Web3.givenProvider);
 					const accounts = await window.ethereum.request({ method: 'eth_accounts' });
 					if (accounts !== null && accounts.length !== 0) {
+						const thisAccount = accounts[0];
 						setWalletConnectedMode(true);
 						setCurrentAccount(accounts[0]);
 						console.log(accounts);
+						if (localStorage.getItem(thisAccount) === null) {
+							newVerifications([]);
+						} else {
+							setNewVerifications(JSON.parse(localStorage.getItem(thisAccount))[1]);
+						}
 					} else {
 						setWalletConnectedMode(false);
 					}
@@ -192,13 +196,24 @@ const EpochPage = () => {
 		};
 
 		getContractData();
-	}, [walletConnectedMode, walletHasSwappedThisSession]);
+	}, [walletConnectedMode, walletHasSwappedThisSession, acceptHandled]);
 
-	const handleVerificationAccept = i => {
-		setNewVerifications(newVerifications => [
-			...newVerifications.slice(0, i),
-			...newVerifications.slice(i + 1, newVerifications.length),
-		]);
+	const handleVerificationAccept = addr => {
+		var userDb3 = JSON.parse(localStorage.getItem(addr));
+		for (var i = 0; i < userDb3[0].length; i++) {
+			if (userDb3[0][i][0] == currentAccount) {
+				userDb3[0] = [...userDb3[0].slice(0, i), ...userDb3[0].slice(i + 1, userDb3[0].length)];
+				console.log(userDb3);
+			}
+		}
+		for (var i = 0; i < userDb3[1].length; i++) {
+			if (userDb3[1][i][0][1] == currentAccount) {
+				userDb3[1] = [...userDb3[1].slice(0, i), ...userDb3[1].slice(i + 1, userDb3[1].length)];
+				console.log(userDb3);
+			}
+		}
+		localStorage.setItem(addr, JSON.stringify(userDb3));
+		setAcceptHandled(acceptHandled + 1);
 	};
 
 	return walletConnectedMode === true && newVerifications.length !== 0 ? (
@@ -230,6 +245,9 @@ const EpochPage = () => {
 					<AboutSectionHeader>My Verifications</AboutSectionHeader>
 				</PageHeader>
 				<DappCardWrapper>
+					<SubPageHeader>
+						<AboutSectionSubHeader>New</AboutSectionSubHeader>
+					</SubPageHeader>
 					<AssetAllocationContainer>
 						<NoWalletMessage>
 							<NoWalletIMG src={smartCity} />

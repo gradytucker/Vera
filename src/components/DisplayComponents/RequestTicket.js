@@ -91,17 +91,28 @@ const UserAndGraphContainer = styled.div`
 `;
 
 const verifyTicket = props => {
+	console.log(props.tickets);
+
 	return (
 		<UserAndGraphContainer>
 			{[...Array(props.tickets.length)].map((e, i) => {
+				var index = i;
+				console.log(i);
+
+				console.log(props.tickets[i]);
 				return (
 					<UserBoxContent key={i}>
 						<div>
-							you are requesting
-							<BoxSubtitle>{props.tickets[i][0]}</BoxSubtitle>
+							<BoxHeader>you are requesting:</BoxHeader>
+							{[...Array(props.tickets[i][1].length)].map((e, j) => {
+								return <div key={j}>{'\n• ' + props.tickets[i][1][j]}</div>;
+							})}
 						</div>
 						<div>
-							from <BoxHeader>{props.tickets[i][1]}</BoxHeader>
+							from:
+							<BoxHeader>
+								{props.tickets[i][0].slice(0, 4) + '...' + props.tickets[i][0].slice(-4)}
+							</BoxHeader>
 						</div>
 					</UserBoxContent>
 				);

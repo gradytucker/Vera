@@ -4,13 +4,14 @@ import bp from '../../Theme/breakpoints';
 import Footer from '../../Navigation/Footer/Footer';
 import InformationButton from '../../Button/InformationButton/InformationButton';
 import SecondaryButton from '../../Button/Secondary/SecondaryButtonNoArrow';
-import { serviceLevelsJSON } from '../../../Data/VeraPriveleges';
 import noWalletFace from '../../../assets/images/connectWallet.png';
 import 'animate.css/animate.min.css';
 import React from 'react';
 import Web3 from 'web3';
 import RequestTicket from '../../DisplayComponents/RequestTicket';
 import smartCity from '../../../assets/images/smartCity.png';
+import { serviceLevelsJSON } from '../../../Data/VeraPriveleges';
+import { permissionsJSON } from '../../../Data/VeraPriveleges';
 
 const PageWrapper = styled.div`
 	padding: 0 28px 64px 28px;
@@ -216,7 +217,7 @@ const AddressInput = styled.input`
 	}
 `;
 
-const RequestForm = styled.form`
+const RequestForm = styled.div`
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
@@ -238,21 +239,21 @@ const NoWalletMessage = styled.div`
 	opacity: 70%;
 	margin: 0 auto;
 	padding-top: 10vh;
+	font-family: 'expletus-sans-regular';
 `;
 
 const EpochPage = () => {
+	const [isLoaded, setIsLoaded] = React.useState(false);
 	const [newRequestToggled, setNewRequestToggled] = React.useState(false);
 	const [newRequestAddress, setNewRequestAddress] = React.useState('');
 	const [walletConnectedMode, setWalletConnectedMode] = React.useState(false);
 	const [walletHasSwappedThisSession, setWalletHasSwappedThisSession] = React.useState(0);
 	const [currentAccount, setCurrentAccount] = React.useState('');
-	const [permittedData, setPermittedData] = React.useState(Array(40).fill(0));
-	const [serviceLevel, setServiceLevel] = React.useState('');
-	const [newRequests, setNewRequests] = React.useState([
-		['0x4E...4865', 'prescriptions'],
-		['0x2A...9261', 'prescriptions'],
-		['0x9F...1213', 'prescriptions'],
-	]);
+	const [permittedDataBits, setPermittedDataBits] = React.useState([]);
+	const [permissionTitles, setPermissionTitles] = React.useState([]);
+	const [serviceLevel, setServiceLevel] = React.useState('standard user');
+	const [newRequests, setNewRequests] = React.useState([]);
+	const [requestsSent, setRequestsSent] = React.useState(0);
 
 	/* listen to event emitted from change in local storage, set Wallet Connect Mode for 
 	appropriate component rerender */
@@ -261,6 +262,7 @@ const EpochPage = () => {
 		// the console.
 		if (localStorage.getItem('account') === '' || localStorage.getItem('account') === null) {
 			setWalletConnectedMode(false);
+			setNewRequestToggled(false);
 		} else if (localStorage.getItem('account') !== '' || localStorage.getItem('account') !== null) {
 			setWalletConnectedMode(true);
 			setWalletHasSwappedThisSession(walletHasSwappedThisSession + 1);
@@ -268,7 +270,6 @@ const EpochPage = () => {
 		window.removeEventListener('storage', getFromStorage);
 	});
 
-	// initialise getting lastEpochBalance time for calculating time to next epoch rebalance, and then get the value of the bounty reward.
 	React.useEffect(() => {
 		const getUserData = async () => {
 			const getAndSetUserData = async () => {
@@ -281,23 +282,41 @@ const EpochPage = () => {
 					web3.eth.setProvider(Web3.givenProvider);
 					const accounts = await window.ethereum.request({ method: 'eth_accounts' });
 					if (accounts !== null && accounts.length !== 0) {
+						const thisAccount = accounts[0];
 						setWalletConnectedMode(true);
-						setCurrentAccount(accounts[0]);
-						console.log(accounts);
+						setCurrentAccount(thisAccount);
+						setServiceLevel(serviceLevelsJSON[thisAccount].name);
+						setPermittedDataBits(serviceLevelsJSON[thisAccount].permissionbits);
+						var tempPermissions = [];
+						for (var i = 0; i < 22; i++) {
+							if (JSON.parse(serviceLevelsJSON[thisAccount].permissionbits)[i] === 1) {
+								tempPermissions.push(permissionsJSON[i]);
+							}
+						}
+						if (tempPermissions.length === 0) {
+							setPermissionTitles(['N/A']);
+						} else {
+							setPermissionTitles(tempPermissions);
+						}
+
+						if (localStorage.getItem(thisAccount) === null) {
+							setNewRequests([]);
+						} else {
+							setNewRequests(JSON.parse(localStorage.getItem(thisAccount))[0]);
+						}
 					} else {
 						setWalletConnectedMode(false);
 					}
-
-					// if wallet not connected, just pull contract data
 				} catch (err) {
 					console.log(err.message);
 				}
+				setIsLoaded(true);
 			};
 			await getAndSetUserData();
 		};
 
 		getUserData();
-	}, [walletConnectedMode, walletHasSwappedThisSession]);
+	}, [walletConnectedMode, walletHasSwappedThisSession, requestsSent]);
 
 	const handleSubmit = () => {
 		const web3 = new Web3(window.ethereum);
@@ -305,13 +324,47 @@ const EpochPage = () => {
 		if (result !== true) {
 			alert('Please enter a valid address');
 		} else {
-			const toAddress = newRequestAddress; // Address of the recipient
+			if (localStorage.getItem(currentAccount) === null) {
+				localStorage.setItem(currentAccount, JSON.stringify([[[newRequestAddress, permissionTitles]], []]));
+			} else {
+				var userDb = JSON.parse(localStorage.getItem(currentAccount));
+				userDb[0].push([newRequestAddress, permissionTitles]);
+				localStorage.setItem(currentAccount, JSON.stringify(userDb));
+			}
+
+			if (localStorage.getItem(newRequestAddress) === null) {
+				localStorage.setItem(
+					newRequestAddress,
+					JSON.stringify([[], [[[serviceLevel, currentAccount], permissionTitles]]]),
+				);
+			} else {
+				var userDb2 = JSON.parse(localStorage.getItem(newRequestAddress));
+				console.log('THE ADDRESS EXISTS' + userDb2);
+				console.log(userDb2[1]);
+				userDb2[1].push([[serviceLevel, currentAccount], permissionTitles]);
+				console.log(userDb2[1]);
+				console.log(userDb2);
+				localStorage.setItem(newRequestAddress, JSON.stringify(userDb2));
+			}
+			alert('request sent.');
+			setRequestsSent(requestsSent + 1);
+			setNewRequestToggled(false);
 		}
 	};
 
-	console.log(walletConnectedMode);
-
-	return walletConnectedMode === true && newRequests.length !== 0 ? (
+	return !isLoaded ? (
+		<>
+			<PageWrapper>
+				<PageHeader>
+					<AboutSectionHeader>My Requests</AboutSectionHeader>
+				</PageHeader>
+				<DappCardWrapper>
+					<AssetAllocationContainer></AssetAllocationContainer>
+				</DappCardWrapper>
+			</PageWrapper>
+			<Footer />
+		</>
+	) : isLoaded && walletConnectedMode === true ? (
 		<>
 			<PageWrapper>
 				<PageHeader>
@@ -330,7 +383,14 @@ const EpochPage = () => {
 							</SecondaryButton>
 						</SubPageHeader>
 						<AssetAllocationContainer>
-							<RequestTicket tickets={newRequests} />
+							{isLoaded && walletConnectedMode === true && newRequests.length !== 0 ? (
+								<RequestTicket tickets={newRequests} />
+							) : (
+								<NoWalletMessage>
+									<NoWalletIMG src={smartCity} />
+									You have no pending requests right now!
+								</NoWalletMessage>
+							)}
 						</AssetAllocationContainer>
 					</DappCardWrapper>
 				) : (
@@ -350,9 +410,11 @@ const EpochPage = () => {
 								<NewReqUserBoxContent>
 									<NewReqBoxHeader>New Request</NewReqBoxHeader>
 									<NewReqBoxSubtitle>
-										as a Policeman, you will recieve information regarding:
+										{'as a ' + serviceLevel + ', you will recieve information regarding:'}
 									</NewReqBoxSubtitle>
-									<p>-police records</p>
+									{[...Array(permissionTitles.length)].map((e, i) => {
+										return <div key={i}>{'• ' + permissionTitles[i]}</div>;
+									})}
 									<RequestForm>
 										<label>
 											Address:
@@ -375,24 +437,7 @@ const EpochPage = () => {
 			</PageWrapper>
 			<Footer />
 		</>
-	) : walletConnectedMode === true && newRequests.length === 0 ? (
-		<>
-			<PageWrapper>
-				<PageHeader>
-					<AboutSectionHeader>My Requests</AboutSectionHeader>
-				</PageHeader>
-				<DappCardWrapper>
-					<AssetAllocationContainer>
-						<NoWalletMessage>
-							<NoWalletIMG src={smartCity} />
-							You have no pending requests right now!
-						</NoWalletMessage>
-					</AssetAllocationContainer>
-				</DappCardWrapper>
-			</PageWrapper>
-			<Footer />
-		</>
-	) : walletConnectedMode === false ? (
+	) : isLoaded && walletConnectedMode === false ? (
 		<>
 			<PageWrapper>
 				<PageHeader>

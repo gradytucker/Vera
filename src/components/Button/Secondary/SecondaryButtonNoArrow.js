@@ -4,7 +4,7 @@ import theme from '../../Theme/theme';
 const StyledButton = styled.button`
 	background: linear-gradient(250deg, #a53ea4 0%, #21a4d1 180%);
 	border-radius: 60px;
-	padding: 14px 15px 10px 15px;
+	padding: 7px 15px 7px 15px;
 	font-size: 20px;
 	font-family: 'expletus-sans-regular';
 	margin-left: 20px;

@@ -82,7 +82,7 @@ const UserAndGraphContainer = styled.div`
 	margin-top: 30px;
 	width: 90%;
 	align-items: center;
-	@media ${bp.md} {
+	@media ${bp.sm} {
 		display: flex;
 		flex-wrap: wrap;
 		flex-direction: row;
@@ -92,30 +92,35 @@ const UserAndGraphContainer = styled.div`
 `;
 
 const verifyTicket = props => {
-	const handleAccept = i => {
-		props.onAccept(i);
+	const handleAccept = addr => {
+		props.onAccept(addr);
 	};
 
 	return (
 		<UserAndGraphContainer>
 			{[...Array(props.tickets.length)].map((e, i) => {
 				var index = i;
+				console.log(i);
+
+				console.log(props.tickets[i]);
 				return (
 					<UserBoxContent key={i}>
 						<div>
-							<BoxHeader>{props.tickets[i][0]}</BoxHeader>
-						</div>
-						<div>
+							<BoxHeader>{props.tickets[i][0][0]}</BoxHeader>
 							is requesting access to:
-							<BoxSubtitle>{props.tickets[i][1]}</BoxSubtitle>
-							<InformationButton
-								onClick={() => {
-									handleAccept(index);
-								}}
-							>
-								Accept
-							</InformationButton>
+							<div>
+								{[...Array(props.tickets[i][1].length)].map((e, j) => {
+									return <div key={j}>{'\n• ' + props.tickets[i][1][j]}</div>;
+								})}
+							</div>
 						</div>
+						<InformationButton
+							onClick={() => {
+								handleAccept(props.tickets[i][0][1]);
+							}}
+						>
+							Accept
+						</InformationButton>
 					</UserBoxContent>
 				);
 			})}
