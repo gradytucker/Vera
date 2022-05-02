@@ -10,6 +10,6 @@
 - Solidity-based smart contract deployed on Polygon testnet.
 
 ## Pitch
-- We are creating a protocol that will ideally be interwoven with everyone's digital libes in smart cities. A protocil that is scalable, exceptionally scure, and completely privacy preserving.
+- We are creating a protocol that will ideally be interwoven with everyone's digital lives in smart cities. A protocol that is scalable, exceptionally secure, and completely privacy preserving.
 
 - This protocol will allow ubiquitous access to real life functionality and data such as pharmacy scripts, taxes, insurance, identification, transport, welfare, police checks and records, COVID vaccination reports, etc. while preserving the least exposure principle and full privacy.
