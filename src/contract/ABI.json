@@ -9,6 +9,16 @@
 	{
 		"inputs": [
 			{ "internalType": "address", "name": "veraUser", "type": "address" },
+			{ "internalType": "bytes", "name": "encryptedBankInformation", "type": "bytes" }
+		],
+		"name": "addBankInformation",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{ "internalType": "address", "name": "veraUser", "type": "address" },
 			{ "internalType": "bytes", "name": "encryptedWaterBill", "type": "bytes" },
 			{ "internalType": "bytes", "name": "encryptedGasBill", "type": "bytes" },
 			{ "internalType": "bytes", "name": "encryptedInternetBill", "type": "bytes" },
@@ -25,6 +35,16 @@
 			{ "internalType": "bytes", "name": "encryptedCOVIDReport", "type": "bytes" }
 		],
 		"name": "addCOVIDReport",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{ "internalType": "address", "name": "veraUser", "type": "address" },
+			{ "internalType": "bytes", "name": "encryptedCryptoInformation", "type": "bytes" }
+		],
+		"name": "addCryptoInformation",
 		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"
@@ -156,6 +176,18 @@
 		"name": "computeVerification",
 		"outputs": [],
 		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{ "internalType": "bytes", "name": "key", "type": "bytes" },
+			{ "internalType": "address", "name": "verifierAddress", "type": "address" },
+			{ "internalType": "string", "name": "timestamp", "type": "string" },
+			{ "internalType": "string", "name": "nonce", "type": "string" }
+		],
+		"name": "computeVerificationPublic",
+		"outputs": [{ "internalType": "bytes32", "name": "", "type": "bytes32" }],
+		"stateMutability": "view",
 		"type": "function"
 	},
 	{

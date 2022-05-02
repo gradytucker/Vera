@@ -9,4 +9,7 @@ var cChainID = middleware_setup.chainID;
 var computeVerification = (key, address, timestamp, nonce) =>
 	c.computeVerification(key, address, timestamp, nonce).call();
 
-export { cABI, cAddr, cRPC, cChainID, computeVerification };
+var computeVerificationPublic = (key, address, timestamp, nonce) =>
+	c.computeVerificationPublic(key, address, timestamp, nonce).call();
+
+export { cABI, cAddr, cRPC, cChainID, computeVerification, computeVerificationPublic };

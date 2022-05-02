@@ -22,6 +22,23 @@ import noWalletFace from '../../../assets/images/connectWallet.png';
 import smartCity from '../../../assets/images/smartCity.png';
 import { userData } from '../../../Data/userData';
 import { serviceLevelsJSON } from '../../../Data/VeraPriveleges';
+import SecondaryButton from '../../Button/Secondary/SecondaryButtonNoArrow';
+import Modal from 'react-modal';
+
+const customStyles = {
+	content: {
+		top: '50%',
+		left: '50%',
+		right: 'auto',
+		bottom: 'auto',
+		'max-height': '50%',
+		width: '40%',
+		marginRight: '-50%',
+		transform: 'translate(-50%, -50%)',
+		'overflow-y': 'scroll',
+		padding: '50px',
+	},
+};
 
 const PageWrapper = styled.div`
 	padding: 0 28px 64px 28px;
@@ -138,10 +155,24 @@ const NoWalletMessage = styled.div`
 	opacity: 70%;
 	margin: 0 auto;
 	padding-top: 10vh;
+	padding-bottom: 10vh;
 	font-family: 'expletus-sans-regular';
 `;
 
-const EpochPage = () => {
+const VerificationsPage = () => {
+	const [modalIsOpen, setIsOpen] = React.useState(false);
+
+	function openModal() {
+		setIsOpen(true);
+	}
+
+	function afterOpenModal() {
+		// references are now sync'd and can be accessed.
+	}
+
+	function closeModal() {
+		setIsOpen(false);
+	}
 	const [isLoaded, setIsLoaded] = React.useState(false);
 	const [walletConnectedMode, setWalletConnectedMode] = React.useState(false);
 	const [currentAccount, setCurrentAccount] = React.useState('');
@@ -194,7 +225,7 @@ const EpochPage = () => {
 						}
 
 						if (localStorage.getItem(thisAccount) === null) {
-							newVerifications([]);
+							setNewVerifications([]);
 						} else {
 							setNewVerifications(JSON.parse(localStorage.getItem(thisAccount))[1]);
 						}
@@ -253,6 +284,7 @@ const EpochPage = () => {
 				transactionReceipt = await web3.eth.getTransactionReceipt(txHash);
 				await sleep(1000);
 			}
+			console.log(transactionReceipt);
 			console.log('returned event hash: ' + transactionReceipt.logs[0].data);
 			if (transactionReceipt.status === true) {
 				console.log('accept successfully handled. rerendering...');
@@ -292,9 +324,12 @@ const EpochPage = () => {
 				}
 
 				alert('you accepted a request from : ' + addr);
-				for (var i = 0; i < userDb3[1].length; i++) {
-					if (userDb4[1][i][0][1] == currentAccount) {
-						userDb4[1] = [...userDb4[1].slice(0, i), ...userDb4[1].slice(i + 1, userDb3[1].length)];
+				for (var i = 0; i < userDb4[1].length; i++) {
+					console.log(userDb4[1][i][0][1], addr);
+					if (userDb4[1][i][0][1] == addr) {
+						console.log(userDb4[1]);
+						userDb4[1] = [...userDb4[1].slice(0, i), ...userDb4[1].slice(i + 1, userDb4[1].length)];
+						console.log(userDb4[1]);
 					}
 				}
 				localStorage.setItem(addr, JSON.stringify(userDb3));
@@ -318,6 +353,56 @@ const EpochPage = () => {
 				<DappCardWrapper>
 					<SubPageHeader>
 						<AboutSectionSubHeader>New</AboutSectionSubHeader>
+						<SecondaryButton onClick={openModal}>My account</SecondaryButton>
+						<Modal
+							isOpen={modalIsOpen}
+							onAfterOpen={afterOpenModal}
+							onRequestClose={closeModal}
+							style={customStyles}
+							contentLabel="Example Modal"
+						>
+							<h2
+								style={{
+									textDecoration: 'underline',
+								}}
+							>
+								My profile:
+							</h2>
+							{[...Array(24)].map((e, i, j) => {
+								return (
+									<div
+										style={{
+											marginTop: '20px',
+											marginBottom: '20px',
+										}}
+									>
+										<div
+											key={i}
+											style={{
+												fontSize: '18px',
+											}}
+										>
+											{Object.keys(userData).reverse()[i] + ':'}
+										</div>
+										<div
+											key={i}
+											style={{
+												marginLeft: '10px',
+												marginTop: '5px',
+												fontSize: '14px',
+											}}
+										>
+											{'• ' +
+												Object.values(userData)
+													.reverse()
+													[i].replace(/;/g, ', ')
+													.replace('&', '')}
+										</div>
+									</div>
+								);
+							})}
+							<InformationButton onClick={closeModal}>close</InformationButton>
+						</Modal>
 					</SubPageHeader>
 					<AssetAllocationContainer>
 						<VerifyTicket
@@ -340,6 +425,56 @@ const EpochPage = () => {
 				<DappCardWrapper>
 					<SubPageHeader>
 						<AboutSectionSubHeader>New</AboutSectionSubHeader>
+						<SecondaryButton onClick={openModal}>My account</SecondaryButton>
+						<Modal
+							isOpen={modalIsOpen}
+							onAfterOpen={afterOpenModal}
+							onRequestClose={closeModal}
+							style={customStyles}
+							contentLabel="Example Modal"
+						>
+							<h2
+								style={{
+									textDecoration: 'underline',
+								}}
+							>
+								My profile:
+							</h2>
+							{[...Array(24)].map((e, i, j) => {
+								return (
+									<div
+										style={{
+											marginTop: '20px',
+											marginBottom: '20px',
+										}}
+									>
+										<div
+											key={i}
+											style={{
+												fontSize: '18px',
+											}}
+										>
+											{Object.keys(userData).reverse()[i] + ':'}
+										</div>
+										<div
+											key={i}
+											style={{
+												marginLeft: '10px',
+												marginTop: '5px',
+												fontSize: '14px',
+											}}
+										>
+											{'• ' +
+												Object.values(userData)
+													.reverse()
+													[i].replace(/;/g, ', ')
+													.replace('&', '')}
+										</div>
+									</div>
+								);
+							})}
+							<InformationButton onClick={closeModal}>close</InformationButton>
+						</Modal>
 					</SubPageHeader>
 					<AssetAllocationContainer>
 						<NoWalletMessage>
@@ -371,4 +506,4 @@ const EpochPage = () => {
 	) : null;
 };
 
-export default EpochPage;
+export default VerificationsPage;

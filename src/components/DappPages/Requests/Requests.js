@@ -243,7 +243,7 @@ const NoWalletMessage = styled.div`
 	font-family: 'expletus-sans-regular';
 `;
 
-const EpochPage = () => {
+const RequestsPage = () => {
 	const [isLoaded, setIsLoaded] = React.useState(false);
 	const [newRequestToggled, setNewRequestToggled] = React.useState(false);
 	const [newRequestAddress, setNewRequestAddress] = React.useState('');
@@ -290,7 +290,7 @@ const EpochPage = () => {
 						setServiceLevel(serviceLevelsJSON[thisAccount].name);
 						setPermittedDataBits(serviceLevelsJSON[thisAccount].permissionbits);
 						var tempPermissions = [];
-						for (var i = 0; i < 22; i++) {
+						for (var i = 0; i < 24; i++) {
 							if (JSON.parse(serviceLevelsJSON[thisAccount].permissionbits)[i] === 1) {
 								tempPermissions.push(permissionsJSON[i]);
 							}
@@ -329,14 +329,22 @@ const EpochPage = () => {
 		if (result !== true) {
 			alert('Please enter a valid address');
 		} else {
+			// set request data
 			if (localStorage.getItem(currentAccount) === null) {
-				localStorage.setItem(currentAccount, JSON.stringify([[[newRequestAddress, permissionTitles, []]], []]));
+				localStorage.setItem(
+					currentAccount,
+					JSON.stringify([
+						[[newRequestAddress, permissionTitles, [], timestamp, nonce, newPrivKey, currentAccount]],
+						[],
+					]),
+				);
 			} else {
 				var userDb = JSON.parse(localStorage.getItem(currentAccount));
-				userDb[0].push([newRequestAddress, permissionTitles, []]);
+				userDb[0].push([newRequestAddress, permissionTitles, [], timestamp, nonce, newPrivKey, currentAccount]);
 				localStorage.setItem(currentAccount, JSON.stringify(userDb));
 			}
 
+			// set data for verifier to grab
 			if (localStorage.getItem(newRequestAddress) === null) {
 				localStorage.setItem(
 					newRequestAddress,
@@ -467,4 +475,4 @@ const EpochPage = () => {
 	) : null;
 };
 
-export default EpochPage;
+export default RequestsPage;

@@ -35,7 +35,7 @@ const serviceLevelsJSON = {
 	},
 
 	'0x7a1e966d1bdb4231b82c62e7de59e338c897832d': {
-		name: 'bouncer',
+		name: 'security officer',
 		permissionbits: '[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]',
 	},
 

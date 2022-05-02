@@ -134,9 +134,10 @@ const Faq1 = () => (
 
 const Faq2 = () => (
 	<p style={{ padding: '18px' }}>
-		The problem that Vera solves is two-fold. Firstly, it solves the problem of least exposure when it comes to
-		personal information and data for real life scenarios, but implementing a zero-knowledge proof procedure for
-		accessing personal information.
+		Vera solves the issue of preserving privacy when it comes to personal information and data for real life
+		scenarios that is stored in digital form. The protocol implements a minimum amount of exposure in this process
+		by implementing a zero-knowledge proof procedure for accessing and revealing personal information be it to users
+		themselves or to requested authorized verifying parties
 	</p>
 );
 
@@ -152,6 +153,23 @@ const Faq3 = () => (
 	</p>
 );
 
+const Faq4 = () => (
+	<div>
+		<p style={{ padding: '18px' }}>contract address: 0xFA9582bE0a57466CD0948cd4b8406Af25e9D5c9E</p>
+		<p style={{ padding: '18px' }}>IPFS address: </p>
+	</div>
+);
+
+const Faq5 = () => (
+	<div>
+		<p style={{ padding: '18px' }}>police-man address: 0x5c9580b38556c8f5c25411a35404f6c618057e32</p>
+		<p style={{ padding: '18px' }}>paramedic address: 0x2f7e17df8dc2db7cada6f18f4b8a7718d5b67391</p>
+		<p style={{ padding: '18px' }}>security officer address: 0x7a1e966d1bdb4231b82c62e7de59e338c897832d</p>
+		<p style={{ padding: '18px' }}>pharamacist address: 0x3db35b4b935f39280a6720ac6b1be8ac030d1db6</p>
+		<p style={{ padding: '18px' }}>daily user address: 0x17912977c84beaf1f5f228f1dd7782fa6bf7f574</p>
+	</div>
+);
+
 const mystyle = {
 	color: 'white',
 	backgroundColor: 'DodgerBlue',
@@ -159,7 +177,7 @@ const mystyle = {
 	fontFamily: 'Arial',
 };
 
-const EpochPage = () => {
+const FAQPage = () => {
 	return (
 		<>
 			<PageWrapper>
@@ -181,6 +199,12 @@ const EpochPage = () => {
 						<AccordionItem title="How does Vera work?">
 							<Faq3 />
 						</AccordionItem>
+						<AccordionItem title="blockchain data">
+							<Faq4 />
+						</AccordionItem>
+						<AccordionItem title="Vera technical data">
+							<Faq5 />
+						</AccordionItem>
 					</Accordion>
 				</DappCardWrapper>
 			</PageWrapper>
@@ -189,4 +213,4 @@ const EpochPage = () => {
 	);
 };
 
-export default EpochPage;
+export default FAQPage;
