@@ -156,7 +156,7 @@ const Faq3 = () => (
 const Faq4 = () => (
 	<div>
 		<p style={{ padding: '18px' }}>contract address: 0xFA9582bE0a57466CD0948cd4b8406Af25e9D5c9E</p>
-		<p style={{ padding: '18px' }}>IPFS address: </p>
+		<p style={{ padding: '18px' }}>curren IPFS hash: QmUTzLcjcmw1UB4AJMnxVFdz94MsrbNnc4FjarK37YV6aK</p>
 	</div>
 );
 
