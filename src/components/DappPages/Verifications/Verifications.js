@@ -20,6 +20,8 @@ import SkeletonEpoch from '../../skeletonLoads/skeletonEpoch';
 import VerifyTicket from '../../DisplayComponents/VerifyTickets';
 import noWalletFace from '../../../assets/images/connectWallet.png';
 import smartCity from '../../../assets/images/smartCity.png';
+import { userData } from '../../../Data/userData';
+import { serviceLevelsJSON } from '../../../Data/VeraPriveleges';
 
 const PageWrapper = styled.div`
 	padding: 0 28px 64px 28px;
@@ -147,6 +149,8 @@ const EpochPage = () => {
 	const [newVerifications, setNewVerifications] = React.useState([]);
 	const [acceptHandled, setAcceptHandled] = React.useState(0);
 
+	var CryptoJS = require('crypto-js');
+
 	/* listen to event emitted from change in local storage, set Wallet Connect Mode for 
 	appropriate component rerender */
 	window.addEventListener('storage', function getFromStorage() {
@@ -161,7 +165,6 @@ const EpochPage = () => {
 		window.removeEventListener('storage', getFromStorage);
 	});
 
-	// initialise getting lastEpochBalance time for calculating time to next epoch rebalance, and then get the value of the bounty reward.
 	React.useEffect(() => {
 		const getContractData = async () => {
 			const getAndSetVesselContractData = async () => {
@@ -177,7 +180,19 @@ const EpochPage = () => {
 						const thisAccount = accounts[0];
 						setWalletConnectedMode(true);
 						setCurrentAccount(accounts[0]);
-						console.log(accounts);
+
+						if (accounts[0] === '0x17912977c84beaf1f5f228f1dd7782fa6bf7f574') {
+							var userDataDb = [];
+							for (var key in userData) {
+								var ciphertext = CryptoJS.AES.encrypt(
+									JSON.stringify(userData[key]),
+									'0xa8393d077a13cd68b4fc928b37e93c35f1bfc613597a5c21aeb9ee32f0273ccf',
+								).toString();
+								userDataDb.push([key, ciphertext]);
+							}
+							localStorage.setItem('onboardUserData', JSON.stringify(userDataDb));
+						}
+
 						if (localStorage.getItem(thisAccount) === null) {
 							newVerifications([]);
 						} else {
@@ -187,7 +202,7 @@ const EpochPage = () => {
 						setWalletConnectedMode(false);
 					}
 
-					// if wallet not connected, just pull contract data
+					// if wallet not connected, just show skeleton
 				} catch (err) {
 					console.log(err.message);
 				}
@@ -198,22 +213,100 @@ const EpochPage = () => {
 		getContractData();
 	}, [walletConnectedMode, walletHasSwappedThisSession, acceptHandled]);
 
-	const handleVerificationAccept = addr => {
-		var userDb3 = JSON.parse(localStorage.getItem(addr));
-		for (var i = 0; i < userDb3[0].length; i++) {
-			if (userDb3[0][i][0] == currentAccount) {
-				userDb3[0] = [...userDb3[0].slice(0, i), ...userDb3[0].slice(i + 1, userDb3[0].length)];
-				console.log(userDb3);
+	const sleep = milliseconds => {
+		return new Promise(resolve => setTimeout(resolve, milliseconds));
+	};
+
+	// function for computing Verification of requesters
+	const handleVerificationAccept = async (addr, ts, nce, prkey) => {
+		try {
+			if (!window.ethereum || localStorage.getItem('account') === '') {
+				throw new Error('No crypto wallet found. Please install it.');
 			}
-		}
-		for (var i = 0; i < userDb3[1].length; i++) {
-			if (userDb3[1][i][0][1] == currentAccount) {
-				userDb3[1] = [...userDb3[1].slice(0, i), ...userDb3[1].slice(i + 1, userDb3[1].length)];
-				console.log(userDb3);
+
+			const web3 = new Web3(window.ethereum);
+			web3.eth.setProvider(Web3.givenProvider);
+			const contract = new web3.eth.Contract(contractMethods.cABI);
+			const accounts = await window.ethereum.request({ method: 'eth_accounts' });
+			const account = accounts[0];
+			const contractAddress = contractMethods.cAddr;
+
+			const transactionParameters = {
+				from: account,
+				to: contractAddress,
+				gasPrice: web3.eth.gasPrice,
+				gas: '21000',
+				data: contract.methods
+					.computeVerification(String(prkey), String(addr), String(ts), String(nce))
+					.encodeABI(),
+			};
+
+			const txHash = await window.ethereum.request({
+				method: 'eth_sendTransaction',
+				params: [transactionParameters],
+			});
+
+			console.log('txhash created: ' + txHash);
+
+			var transactionReceipt = null;
+			while (transactionReceipt === null) {
+				transactionReceipt = await web3.eth.getTransactionReceipt(txHash);
+				await sleep(1000);
 			}
+			console.log('returned event hash: ' + transactionReceipt.logs[0].data);
+			if (transactionReceipt.status === true) {
+				console.log('accept successfully handled. rerendering...');
+				var stringToPass = '';
+				const AddrPermissionBits = JSON.parse(serviceLevelsJSON[String(addr)].permissionbits);
+				const encryptedData = [JSON.parse(localStorage.getItem('onboardUserData'))];
+				console.log(AddrPermissionBits);
+				console.log(encryptedData);
+				for (var i = 0; i < AddrPermissionBits.length; i++) {
+					console.log(AddrPermissionBits[i]);
+					if (Number(AddrPermissionBits[i]) === 1) {
+						console.log(encryptedData[0][i]);
+						var ciphertext = String(encryptedData[0][i][1]);
+						console.log(ciphertext);
+						var bytes = CryptoJS.AES.decrypt(
+							ciphertext,
+							'0xa8393d077a13cd68b4fc928b37e93c35f1bfc613597a5c21aeb9ee32f0273ccf',
+						);
+						var decryptedData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
+						console.log('decrypted data: ' + decryptedData);
+						stringToPass += decryptedData;
+					}
+				}
+				console.log(stringToPass);
+				var eventHash = transactionReceipt.logs[0].data;
+				var polygonLink = 'https://mumbai.polygonscan.com/tx/' + txHash;
+
+				var userDb3 = JSON.parse(localStorage.getItem(addr)); // requestors db
+				var userDb4 = JSON.parse(localStorage.getItem(currentAccount)); // currentUsersDb
+				//
+				// add return contents to requestors db request spot
+				for (var i = 0; i < userDb3[0].length; i++) {
+					if (userDb3[0][i][0] == currentAccount) {
+						userDb3[0][i][2] = [eventHash, stringToPass, polygonLink];
+						console.log(userDb3);
+					}
+				}
+
+				alert('you accepted a request from : ' + addr);
+				for (var i = 0; i < userDb3[1].length; i++) {
+					if (userDb4[1][i][0][1] == currentAccount) {
+						userDb4[1] = [...userDb4[1].slice(0, i), ...userDb4[1].slice(i + 1, userDb3[1].length)];
+					}
+				}
+				localStorage.setItem(addr, JSON.stringify(userDb3));
+				localStorage.setItem(currentAccount, JSON.stringify(userDb4));
+
+				setAcceptHandled(acceptHandled + 1);
+			} else {
+				console.log('transaction failed, not rerendering.');
+			}
+		} catch (err) {
+			console.log(err.message);
 		}
-		localStorage.setItem(addr, JSON.stringify(userDb3));
-		setAcceptHandled(acceptHandled + 1);
 	};
 
 	return walletConnectedMode === true && newVerifications.length !== 0 ? (
@@ -229,8 +322,8 @@ const EpochPage = () => {
 					<AssetAllocationContainer>
 						<VerifyTicket
 							tickets={newVerifications}
-							onAccept={i => {
-								handleVerificationAccept(i);
+							onAccept={(addr, ts, nce, prkey) => {
+								handleVerificationAccept(addr, ts, nce, prkey);
 							}}
 						/>
 					</AssetAllocationContainer>

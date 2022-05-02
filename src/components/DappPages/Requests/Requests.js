@@ -154,11 +154,11 @@ const NewReqUserBoxContent = styled.div`
 	margin-bottom: 20px;
 	color: ${theme.color.text.primary};
 	border: 0px solid rgba(255, 255, 255, 0.5);
-	height: 300px;
+	height: 400px;
 	width: 88vw;
 	@media ${bp.sm} {
 		width: 100%;
-		height: 300px;
+		height: 400px;
 		margin-left: 20px;
 		margin-right: 20px;
 	}
@@ -210,6 +210,7 @@ const AddressInput = styled.input`
 	font-family: 'expletus-sans-regular';
 	background: white;
 	border: none;
+	width: 250px;
 	border-radius: 30px;
 	::placeholder {
 		font-family: 'expletus-sans-regular';
@@ -246,6 +247,7 @@ const EpochPage = () => {
 	const [isLoaded, setIsLoaded] = React.useState(false);
 	const [newRequestToggled, setNewRequestToggled] = React.useState(false);
 	const [newRequestAddress, setNewRequestAddress] = React.useState('');
+	const [newPrivKey, setNewPrivKey] = React.useState('');
 	const [walletConnectedMode, setWalletConnectedMode] = React.useState(false);
 	const [walletHasSwappedThisSession, setWalletHasSwappedThisSession] = React.useState(0);
 	const [currentAccount, setCurrentAccount] = React.useState('');
@@ -321,29 +323,31 @@ const EpochPage = () => {
 	const handleSubmit = () => {
 		const web3 = new Web3(window.ethereum);
 		let result = web3.utils.isAddress(newRequestAddress);
+		const timestamp = String(Date.now());
+		const nonce = 'x'.repeat(20).replace(/x/g, x => (Math.random() * 10) | 0);
+
 		if (result !== true) {
 			alert('Please enter a valid address');
 		} else {
 			if (localStorage.getItem(currentAccount) === null) {
-				localStorage.setItem(currentAccount, JSON.stringify([[[newRequestAddress, permissionTitles]], []]));
+				localStorage.setItem(currentAccount, JSON.stringify([[[newRequestAddress, permissionTitles, []]], []]));
 			} else {
 				var userDb = JSON.parse(localStorage.getItem(currentAccount));
-				userDb[0].push([newRequestAddress, permissionTitles]);
+				userDb[0].push([newRequestAddress, permissionTitles, []]);
 				localStorage.setItem(currentAccount, JSON.stringify(userDb));
 			}
 
 			if (localStorage.getItem(newRequestAddress) === null) {
 				localStorage.setItem(
 					newRequestAddress,
-					JSON.stringify([[], [[[serviceLevel, currentAccount], permissionTitles]]]),
+					JSON.stringify([
+						[],
+						[[[serviceLevel, currentAccount, timestamp, nonce, newPrivKey], permissionTitles]],
+					]),
 				);
 			} else {
 				var userDb2 = JSON.parse(localStorage.getItem(newRequestAddress));
-				console.log('THE ADDRESS EXISTS' + userDb2);
-				console.log(userDb2[1]);
-				userDb2[1].push([[serviceLevel, currentAccount], permissionTitles]);
-				console.log(userDb2[1]);
-				console.log(userDb2);
+				userDb2[1].push([[serviceLevel, currentAccount, timestamp, nonce, newPrivKey], permissionTitles]);
 				localStorage.setItem(newRequestAddress, JSON.stringify(userDb2));
 			}
 			alert('request sent.');
@@ -373,7 +377,7 @@ const EpochPage = () => {
 				{newRequestToggled === false ? (
 					<DappCardWrapper>
 						<SubPageHeader>
-							<AboutSectionSubHeader>Pending</AboutSectionSubHeader>
+							<AboutSectionSubHeader>All</AboutSectionSubHeader>
 							<SecondaryButton
 								onClick={() => {
 									setNewRequestToggled(true);
@@ -410,7 +414,7 @@ const EpochPage = () => {
 								<NewReqUserBoxContent>
 									<NewReqBoxHeader>New Request</NewReqBoxHeader>
 									<NewReqBoxSubtitle>
-										{'as a ' + serviceLevel + ', you will recieve information regarding:'}
+										{'as a ' + serviceLevel + ', you will receive information regarding:'}
 									</NewReqBoxSubtitle>
 									{[...Array(permissionTitles.length)].map((e, i) => {
 										return <div key={i}>{'• ' + permissionTitles[i]}</div>;
@@ -423,6 +427,12 @@ const EpochPage = () => {
 												value={newRequestAddress}
 												placeholder={'enter an address'}
 												onChange={e => setNewRequestAddress(e.target.value)}
+											/>
+											<AddressInput
+												type="text"
+												value={newPrivKey}
+												placeholder={'enter your private key'}
+												onChange={e => setNewPrivKey(e.target.value)}
 											/>
 										</label>
 										<InformationButton onClick={() => handleSubmit()}>

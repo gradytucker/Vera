@@ -533,6 +533,7 @@ const EpochPage = () => {
 				transactionReceipt = await web3.eth.getTransactionReceipt(txHash);
 				await sleep(1000);
 			}
+			console.log(transactionReceipt);
 			if (transactionReceipt.status === true) {
 				setBountyLockStatus(true);
 				console.log('epoch successfully reset. rerendering...');

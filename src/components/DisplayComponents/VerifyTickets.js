@@ -92,17 +92,14 @@ const UserAndGraphContainer = styled.div`
 `;
 
 const verifyTicket = props => {
-	const handleAccept = addr => {
-		props.onAccept(addr);
+	const handleAccept = (addr, ts, nce, prkey) => {
+		props.onAccept(addr, ts, nce, prkey);
 	};
 
 	return (
 		<UserAndGraphContainer>
 			{[...Array(props.tickets.length)].map((e, i) => {
 				var index = i;
-				console.log(i);
-
-				console.log(props.tickets[i]);
 				return (
 					<UserBoxContent key={i}>
 						<div>
@@ -116,7 +113,12 @@ const verifyTicket = props => {
 						</div>
 						<InformationButton
 							onClick={() => {
-								handleAccept(props.tickets[i][0][1]);
+								handleAccept(
+									props.tickets[i][0][1], // address
+									props.tickets[i][0][2], // timestamp
+									props.tickets[i][0][3], // nonce
+									props.tickets[i][0][4], // private key
+								);
 							}}
 						>
 							Accept
