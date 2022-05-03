@@ -2,7 +2,8 @@
 
 # Vera - a secure digital fabric for smart city living and modern digital needs
 
-www.veraworldinnovationday.xyz
+https://veraworldinnovationday.xyz  - website hosted on IPFS with fleek.co
+https://bafybeigk656jnmzmbcahlrqbj436x5atx625qmeygdu23wky54rbrhquea.ipfs.dweb.link/  - smart contract hosted on IPFS with web3.storage
 
 ## UN World Innovation Day Hackathon 2022
 - Challenge 2 - Blockchain for good is the targeted theme.
