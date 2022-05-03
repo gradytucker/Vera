@@ -234,10 +234,33 @@ const Faq5 = () => (
 			justifyContent: 'center',
 		}}
 	>
-		<p style={{ paddingTop: '18px', paddingLeft: '18px', fontSize: '16px' }}>View our site through IPFS:</p>
 		<p style={{ padding: '18px' }}>
-			<a href="https://ipfs.io/ipfs/QmSDkoLjojYra9RRM1ZH4j5qrFYutzCmBTQd5LzjpajduH/#" target="_blank">
-				https://ipfs.io/ipfs/QmSDkoLjojYra9RRM1ZH4j5qrFYutzCmBTQd5LzjpajduH/#
+			With the intention of making our solution as resilient to downtime as possible in addition to making the
+			Web3 dApp harder to hack, we elected to host on IPFS. We are hosting our site with the help of IPFS with the
+			help of IPFS's fleek utility.
+		</p>
+		<p style={{ paddingLeft: '18px' }}>You can verify this with the following:</p>
+		<p style={{ paddingLeft: '18px', paddingBottom: '18px' }}>
+			{' '}
+			Our fleek URL:{' '}
+			<a href="https://fragrant-firefly-5041.on.fleek.co/" target="_blank">
+				https://fragrant-firefly-5041.on.fleek.co/
+			</a>
+		</p>
+		<p style={{ paddingLeft: '18px' }}>
+			You can also verify this in our github repository folder under /IPFS/ where we will update the folder with
+			the latest IPFS URL and hash (the current IPFS hash will always be one behind our latest deployed variant,
+			so we can't post it here unfortunately). We are also hosting our smart contract on web3.storage making use
+			of IPFS to make our open-source initiative - transparency and visibility of the smart contract - as
+			resistant to integrity attacks and downtime as possible.
+		</p>
+		<p style={{ paddingLeft: '18px' }}>
+			Our web3.storage / IPFS URL:{' '}
+			<a
+				href="https://dweb.link/ipfs/bafybeigk656jnmzmbcahlrqbj436x5atx625qmeygdu23wky54rbrhquea"
+				target="_blank"
+			>
+				https://dweb.link/ipfs/bafybeigk656jnmzmbcahlrqbj436x5atx625qmeygdu23wky54rbrhquea
 			</a>
 		</p>
 	</div>
