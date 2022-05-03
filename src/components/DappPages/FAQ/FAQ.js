@@ -155,7 +155,7 @@ const Faq1 = () => (
 			Vera is a secure digital fabric for smart city living and modern digital needs. It is a blockchain protocol
 			that will allow ubiquitous access to real life functionality and data such as pharmacy scripts, taxes,
 			insurance, identification, transport, welfare, police checks and records, COVID vaccination reports, etc.
-			while preserving the lease exposure principle and full privacy.
+			while preserving the least exposure principle and full privacy.
 		</p>
 	</div>
 );
@@ -174,7 +174,7 @@ const Faq2 = () => (
 			Vera solves the issue of preserving privacy when it comes to personal information and data for real life
 			scenarios that is stored in digital form. The protocol implements a minimum amount of exposure in this
 			process by implementing a zero-knowledge proof procedure for accessing and revealing personal information be
-			it to users themselves or to requested authorized verifying parties
+			it to users themselves or to requested authorized verifying parties.
 		</p>
 	</div>
 );
@@ -248,11 +248,9 @@ const Faq5 = () => (
 			</a>
 		</p>
 		<p style={{ paddingLeft: '18px' }}>
-			You can also verify this in our github repository folder under /IPFS/ where we will update the folder with
-			the latest IPFS URL and hash (the current IPFS hash will always be one behind our latest deployed variant,
-			so we can't post it here unfortunately). We are also hosting our smart contract on web3.storage making use
-			of IPFS to make our open-source initiative - transparency and visibility of the smart contract - as
-			resistant to integrity attacks and downtime as possible.
+			We are also hosting our smart contract on web3.storage making use of IPFS to make our open-source initiative
+			- transparency and visibility of the smart contract - as resistant to integrity attacks and downtime as
+			possible.
 		</p>
 		<p style={{ paddingLeft: '18px' }}>
 			Our web3.storage / IPFS URL:{' '}
@@ -263,6 +261,7 @@ const Faq5 = () => (
 				https://dweb.link/ipfs/bafybeigk656jnmzmbcahlrqbj436x5atx625qmeygdu23wky54rbrhquea
 			</a>
 		</p>
+		<p style={{ padding: '18px' }}>You can also view our lastest IPFS hash in our github README.md</p>
 	</div>
 );
 
@@ -277,7 +276,7 @@ const Faq6 = () => (
 		}}
 	>
 		<p style={{ paddingTop: '18px', paddingLeft: '18px', fontSize: '16px' }}>
-			When testing this prototype, add these accounts to your metamask wallet (ensure that the sample user at
+			When testing this prototype, add these accounts to your metamask wallet (ensure that the sample user and at
 			least one other account is imported in order to run requests and verifications):
 		</p>
 		<p style={{ paddingTop: '18px', paddingLeft: '18px', fontSize: '16px' }}>police officer:</p>

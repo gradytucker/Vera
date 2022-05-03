@@ -357,7 +357,7 @@ const HomePage = () => {
 								</AboutImageParent>
 								<HeroTextWrapper>
 									<AnimationOnScroll animateIn="animate__fadeInUp" animateOnce={true}>
-										<HeroSectionHeader>A secure digital fabric</HeroSectionHeader>
+										<HeroSectionHeader>A Secure Digital Fabric</HeroSectionHeader>
 									</AnimationOnScroll>
 									<AnimationOnScroll animateIn="animate__fadeInUp" animateOnce={true} delay={500}>
 										<HeroPara>for smart city living and modern digital needs</HeroPara>
@@ -431,7 +431,7 @@ const HomePage = () => {
 									<AboutImg src={lock} alt="lock" />
 								</AboutImageParentRight>
 								<AboutTextWrapperContainer>
-									<AboutSectionHeader>An all-in-one platform </AboutSectionHeader>
+									<AboutSectionHeader>An All-in-One Platform </AboutSectionHeader>
 									<AboutPara>
 										Forget about having seperate accounts for multiple service platforms, keep all
 										your data and verification tools in one secure and frictionless environment
@@ -454,7 +454,7 @@ const HomePage = () => {
 									<AboutImg src={graph} alt="graphs" />
 								</AboutImageParentLeft>
 								<AboutTextWrapperContainer>
-									<AboutSectionHeader>Instantly request and verify</AboutSectionHeader>
+									<AboutSectionHeader>Instantly Request and Verify</AboutSectionHeader>
 									<AboutPara>
 										From Identification, Payments, Transport, Licenses and Pharmacy scripts,
 										verifying yourself has never been more seamless
