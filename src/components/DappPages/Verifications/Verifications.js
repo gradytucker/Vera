@@ -353,7 +353,10 @@ const VerificationsPage = () => {
 				<DappCardWrapper>
 					<SubPageHeader>
 						<AboutSectionSubHeader>New</AboutSectionSubHeader>
-						<SecondaryButton onClick={openModal}>My account</SecondaryButton>
+
+						{currentAccount === '0x17912977c84beaf1f5f228f1dd7782fa6bf7f574' ? (
+							<SecondaryButton onClick={openModal}>My account</SecondaryButton>
+						) : null}
 						<Modal
 							isOpen={modalIsOpen}
 							onAfterOpen={afterOpenModal}
@@ -361,12 +364,23 @@ const VerificationsPage = () => {
 							style={customStyles}
 							contentLabel="Example Modal"
 						>
-							<h2
-								style={{
-									textDecoration: 'underline',
-								}}
-							>
-								My profile:
+							<h2>
+								<div
+									style={{
+										display: 'flex',
+										flexDirection: 'row',
+										justifyContent: 'space-between',
+										paddingBottom: '10px',
+										borderBottom: '1px solid #000',
+									}}
+								>
+									{'👤 ' +
+										Object.values(userData).reverse()[6].replace(/;/g, ', ').replace('&', '') +
+										' ' +
+										Object.values(userData).reverse()[5].replace(/;/g, ', ').replace('&', '') +
+										':'}
+									<InformationButton onClick={closeModal}>close</InformationButton>
+								</div>
 							</h2>
 							{[...Array(24)].map((e, i, j) => {
 								return (
@@ -374,6 +388,11 @@ const VerificationsPage = () => {
 										style={{
 											marginTop: '20px',
 											marginBottom: '20px',
+											border: '0px solid #000',
+											borderRadius: '30px',
+											padding: '20px',
+											boxShadow: 'rgba(0, 0, 0, 0.24) 0px 3px 8px',
+											background: 'linear-gradient(250deg, #f1c7cd 0%, #f1d693 180%)',
 										}}
 									>
 										<div
@@ -401,7 +420,6 @@ const VerificationsPage = () => {
 									</div>
 								);
 							})}
-							<InformationButton onClick={closeModal}>close</InformationButton>
 						</Modal>
 					</SubPageHeader>
 					<AssetAllocationContainer>
@@ -425,7 +443,9 @@ const VerificationsPage = () => {
 				<DappCardWrapper>
 					<SubPageHeader>
 						<AboutSectionSubHeader>New</AboutSectionSubHeader>
-						<SecondaryButton onClick={openModal}>My account</SecondaryButton>
+						{currentAccount === '0x17912977c84beaf1f5f228f1dd7782fa6bf7f574' ? (
+							<SecondaryButton onClick={openModal}>My account</SecondaryButton>
+						) : null}
 						<Modal
 							isOpen={modalIsOpen}
 							onAfterOpen={afterOpenModal}
@@ -433,12 +453,23 @@ const VerificationsPage = () => {
 							style={customStyles}
 							contentLabel="Example Modal"
 						>
-							<h2
-								style={{
-									textDecoration: 'underline',
-								}}
-							>
-								My profile:
+							<h2>
+								<div
+									style={{
+										display: 'flex',
+										flexDirection: 'row',
+										justifyContent: 'space-between',
+										paddingBottom: '10px',
+										borderBottom: '1px solid #000',
+									}}
+								>
+									{'👤 ' +
+										Object.values(userData).reverse()[6].replace(/;/g, ', ').replace('&', '') +
+										' ' +
+										Object.values(userData).reverse()[5].replace(/;/g, ', ').replace('&', '') +
+										':'}
+									<InformationButton onClick={closeModal}>close</InformationButton>
+								</div>
 							</h2>
 							{[...Array(24)].map((e, i, j) => {
 								return (
@@ -446,6 +477,11 @@ const VerificationsPage = () => {
 										style={{
 											marginTop: '20px',
 											marginBottom: '20px',
+											border: '0px solid #000',
+											borderRadius: '30px',
+											padding: '20px',
+											boxShadow: 'rgba(0, 0, 0, 0.24) 0px 3px 8px',
+											background: 'linear-gradient(250deg, #f1c7cd 0%, #f1d693 180%)',
 										}}
 									>
 										<div
@@ -473,7 +509,6 @@ const VerificationsPage = () => {
 									</div>
 								);
 							})}
-							<InformationButton onClick={closeModal}>close</InformationButton>
 						</Modal>
 					</SubPageHeader>
 					<AssetAllocationContainer>

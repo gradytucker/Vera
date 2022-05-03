@@ -19,6 +19,17 @@ import Web3 from 'web3';
 import SkeletonEpoch from '../../skeletonLoads/skeletonEpoch';
 import { Accordion, AccordionItem } from 'react-light-accordion';
 import '../../Theme/accordionStyle.css';
+import topBlur from '../../../assets/images/top-blur.png';
+import VeraArch from '../../../assets/images/Vera_Architecture.png';
+
+const topBG = styled.img`
+	position: absolute;
+	right: 0;
+	left: 0;
+	bottom: 0;
+	z-index: -1;
+	width: 100%;
+`;
 
 const PageWrapper = styled.div`
 	padding: 0 28px 64px 28px;
@@ -124,49 +135,175 @@ const AboutSectionSubHeader = styled.div`
 `;
 
 const Faq1 = () => (
-	<p style={{ padding: '18px' }}>
-		Vera is a secure digital fabric for smart city living and modern digital needs. It is a blockchain protocol that
-		will allow ubiquitous access to real life functionality and data such as pharmacy scripts, taxes, insurance,
-		identification, transport, welfare, police checks and records, COVID vaccination reports, etc. while preserving
-		the lease exposure principle and full privacy.
-	</p>
+	<div
+		style={{
+			height: 'max-content',
+			padding: '20px',
+			display: 'flex',
+			flexDirection: 'column',
+			justifyContent: 'center',
+		}}
+	>
+		<p style={{ padding: '18px' }}>
+			Vera is a secure digital fabric for smart city living and modern digital needs. It is a blockchain protocol
+			that will allow ubiquitous access to real life functionality and data such as pharmacy scripts, taxes,
+			insurance, identification, transport, welfare, police checks and records, COVID vaccination reports, etc.
+			while preserving the lease exposure principle and full privacy.
+		</p>
+	</div>
 );
 
 const Faq2 = () => (
-	<p style={{ padding: '18px' }}>
-		Vera solves the issue of preserving privacy when it comes to personal information and data for real life
-		scenarios that is stored in digital form. The protocol implements a minimum amount of exposure in this process
-		by implementing a zero-knowledge proof procedure for accessing and revealing personal information be it to users
-		themselves or to requested authorized verifying parties
-	</p>
+	<div
+		style={{
+			height: 'max-content',
+			padding: '20px',
+			display: 'flex',
+			flexDirection: 'column',
+			justifyContent: 'center',
+		}}
+	>
+		<p style={{ padding: '18px' }}>
+			Vera solves the issue of preserving privacy when it comes to personal information and data for real life
+			scenarios that is stored in digital form. The protocol implements a minimum amount of exposure in this
+			process by implementing a zero-knowledge proof procedure for accessing and revealing personal information be
+			it to users themselves or to requested authorized verifying parties
+		</p>
+	</div>
 );
 
 const Faq3 = () => (
-	<p style={{ padding: '18px' }}>
-		Vera works by implementing zero-knowledge proof procedures on a blockchain environment. All data is encrypted
-		on-chain with a public key for each user. Vera stores a list of available verifiers in a whitelist. When a
-		verifier requests information, they query the user’s address. As a governing body limits the access that the
-		verifier has, they will only receive information that is pertinent to their role or occupation. Upon the user
-		accepting the information request, the data on-chain is decrypted with the user’s private key signed, the
-		requesting address is verified in the whitelist, and the output result is emitted encrypted with a timestamp,
-		which can then be verified with the verifier’s private key querying the blockchain.
-	</p>
+	<div
+		style={{
+			height: 'max-content',
+			padding: '20px',
+			display: 'flex',
+			flexDirection: 'column',
+			justifyContent: 'center',
+		}}
+	>
+		<p style={{ paddingTop: '18px', paddingLeft: '18px', fontSize: '16px' }}>How it works:</p>
+		<p style={{ padding: '18px' }}>
+			Vera works by implementing zero-knowledge proof procedures on a blockchain environment. All data is
+			encrypted on-chain with a public key for each user. Vera stores a list of available verifiers in a
+			whitelist. When a verifier requests information, they query the user’s address. As a governing body limits
+			the access that the verifier has, they will only receive information that is pertinent to their role or
+			occupation. Upon the user accepting the information request, the data on-chain is decrypted with the user’s
+			private key signed, the requesting address is verified in the whitelist, and the output result is emitted
+			encrypted with a timestamp, which can then be verified with the verifier’s private key querying the
+			blockchain.
+		</p>
+		<p style={{ paddingTop: '18px', paddingLeft: '18px', fontSize: '16px' }}>Architecture diagram:</p>
+		<img style={{ width: '70%', margin: '0 auto', paddingBottom: '18px' }} src={VeraArch}></img>
+	</div>
 );
 
 const Faq4 = () => (
-	<div>
-		<p style={{ padding: '18px' }}>contract address: 0xFA9582bE0a57466CD0948cd4b8406Af25e9D5c9E</p>
-		<p style={{ padding: '18px' }}>curren IPFS hash: QmUTzLcjcmw1UB4AJMnxVFdz94MsrbNnc4FjarK37YV6aK</p>
+	<div
+		style={{
+			height: 'max-content',
+			padding: '20px',
+			display: 'flex',
+			flexDirection: 'column',
+			justifyContent: 'center',
+		}}
+	>
+		<p style={{ paddingTop: '18px', paddingLeft: '18px', fontSize: '16px' }}>View our contract on PolygonScan:</p>
+		<p style={{ padding: '18px' }}>
+			<a href="https://mumbai.polygonscan.com/address/0xfa9582be0a57466cd0948cd4b8406af25e9d5c9e" target="_blank">
+				https://mumbai.polygonscan.com/address/0xfa9582be0a57466cd0948cd4b8406af25e9d5c9e
+			</a>
+		</p>
 	</div>
 );
 
 const Faq5 = () => (
-	<div>
-		<p style={{ padding: '18px' }}>police-man address: 0x5c9580b38556c8f5c25411a35404f6c618057e32</p>
-		<p style={{ padding: '18px' }}>paramedic address: 0x2f7e17df8dc2db7cada6f18f4b8a7718d5b67391</p>
-		<p style={{ padding: '18px' }}>security officer address: 0x7a1e966d1bdb4231b82c62e7de59e338c897832d</p>
-		<p style={{ padding: '18px' }}>pharamacist address: 0x3db35b4b935f39280a6720ac6b1be8ac030d1db6</p>
-		<p style={{ padding: '18px' }}>daily user address: 0x17912977c84beaf1f5f228f1dd7782fa6bf7f574</p>
+	<div
+		style={{
+			height: 'max-content',
+			padding: '20px',
+			display: 'flex',
+			flexDirection: 'column',
+			justifyContent: 'center',
+		}}
+	>
+		<p style={{ paddingTop: '18px', paddingLeft: '18px', fontSize: '16px' }}>View our site through IPFS:</p>
+		<p style={{ padding: '18px' }}>
+			<a href="https://ipfs.io/ipfs/QmSDkoLjojYra9RRM1ZH4j5qrFYutzCmBTQd5LzjpajduH/#" target="_blank">
+				https://ipfs.io/ipfs/QmSDkoLjojYra9RRM1ZH4j5qrFYutzCmBTQd5LzjpajduH/#
+			</a>
+		</p>
+	</div>
+);
+
+const Faq6 = () => (
+	<div
+		style={{
+			height: 'max-content',
+			padding: '20px',
+			display: 'flex',
+			flexDirection: 'column',
+			justifyContent: 'center',
+		}}
+	>
+		<p style={{ paddingTop: '18px', paddingLeft: '18px', fontSize: '16px' }}>
+			When testing this prototype, add these accounts to your metamask wallet:
+		</p>
+		<p style={{ paddingTop: '18px', paddingLeft: '18px', fontSize: '16px' }}>police officer:</p>
+		<p style={{ paddingLeft: '18px', paddingRight: '18px' }}>
+			• address: 0x5c9580b38556c8f5c25411a35404f6c618057e32
+		</p>
+		<p style={{ paddingLeft: '18px', paddingRight: '18px' }}>
+			• private key: 0x880192be8ea9a4230a04a510e298767a6f649dd298eeae54375a65a4b2f2a9da
+		</p>
+		<p style={{ paddingTop: '18px', paddingLeft: '18px', fontSize: '16px' }}>paramedic:</p>
+		<p style={{ paddingLeft: '18px', paddingRight: '18px' }}>
+			• address: 0x2f7e17df8dc2db7cada6f18f4b8a7718d5b67391
+		</p>
+		<p style={{ paddingLeft: '18px', paddingRight: '18px' }}>
+			• private key: 0xc1b13e4f205aa3b8bee180a759c34e6b627d3e89934b668b6ad142cb15febe2b
+		</p>
+		<p style={{ paddingTop: '18px', paddingLeft: '18px', fontSize: '16px' }}>security officer:</p>
+		<p style={{ paddingLeft: '18px', paddingRight: '18px' }}>
+			• address: 0x7a1e966d1bdb4231b82c62e7de59e338c897832d
+		</p>
+		<p style={{ paddingLeft: '18px', paddingRight: '18px' }}>
+			• private key: 0xc8bcbf880b2dafc32ab45aed1dc30c462c3af4314abbbd921e052442f92055e2
+		</p>
+		<p style={{ paddingTop: '18px', paddingLeft: '18px', fontSize: '16px' }}>pharmacist:</p>
+		<p style={{ paddingLeft: '18px', paddingRight: '18px' }}>
+			{' '}
+			• address: 0x3db35b4b935f39280a6720ac6b1be8ac030d1db6
+		</p>
+		<p style={{ paddingLeft: '18px', paddingRight: '18px' }}>
+			• private key: 0x35676018a65ea8f63c7d4e0bae98845c6742545afd0b842bfd473a307b4f4b3a
+		</p>
+		<p style={{ paddingTop: '18px', paddingLeft: '18px', fontSize: '16px' }}>mock user:</p>
+		<p style={{ paddingLeft: '18px', paddingRight: '18px' }}>
+			• address: 0x17912977c84beaf1f5f228f1dd7782fa6bf7f574
+		</p>
+		<p style={{ paddingLeft: '18px', paddingRight: '18px', paddingBottom: '18px' }}>
+			• private key: 0xa8393d077a13cd68b4fc928b37e93c35f1bfc613597a5c21aeb9ee32f0273ccf
+		</p>
+	</div>
+);
+
+const Faq7 = () => (
+	<div
+		style={{
+			height: 'max-content',
+			padding: '20px',
+			display: 'flex',
+			flexDirection: 'column',
+			justifyContent: 'center',
+		}}
+	>
+		<p style={{ paddingTop: '18px', paddingLeft: '18px', fontSize: '16px' }}>View our github:</p>
+		<p style={{ padding: '18px' }}>
+			<a href="https://github.com/gradytucker/Vera/" target="_blank">
+				https://github.com/gradytucker/Vera/
+			</a>
+		</p>
 	</div>
 );
 
@@ -199,11 +336,17 @@ const FAQPage = () => {
 						<AccordionItem title="How does Vera work?">
 							<Faq3 />
 						</AccordionItem>
-						<AccordionItem title="blockchain data">
+						<AccordionItem title="What is your Contract address?">
 							<Faq4 />
 						</AccordionItem>
-						<AccordionItem title="Vera technical data">
+						<AccordionItem title="What are your IPFS details?">
 							<Faq5 />
+						</AccordionItem>
+						<AccordionItem title="Is there prototype data I can use to use this?">
+							<Faq6 />
+						</AccordionItem>
+						<AccordionItem title="Where is your codebase?">
+							<Faq7 />
 						</AccordionItem>
 					</Accordion>
 				</DappCardWrapper>

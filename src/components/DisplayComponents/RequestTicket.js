@@ -19,9 +19,12 @@ const customStyles = {
 		left: '50%',
 		right: 'auto',
 		bottom: 'auto',
+		'max-height': '50%',
+		width: '40%',
 		marginRight: '-50%',
-		width: '30%',
 		transform: 'translate(-50%, -50%)',
+		'overflow-y': 'scroll',
+		padding: '50px',
 	},
 };
 
@@ -210,7 +213,18 @@ const RequestTicket = props => {
 								style={customStyles}
 								contentLabel="Example Modal"
 							>
-								<h2>Data recieved:</h2>
+								<div
+									style={{
+										display: 'flex',
+										flexDirection: 'row',
+										justifyContent: 'space-between',
+										paddingBottom: '10px',
+										borderBottom: '1px solid #000',
+									}}
+								>
+									<h2>Data recieved:</h2>
+									<InformationButton onClick={closeModal}>close</InformationButton>
+								</div>
 								<div
 									style={{
 										marginTop: '10px',
@@ -222,8 +236,13 @@ const RequestTicket = props => {
 											<div
 												key={n}
 												style={{
+													marginTop: '20px',
 													marginBottom: '20px',
-													fontWeight: 'lighter',
+													border: '0px solid #000',
+													borderRadius: '30px',
+													padding: '20px',
+													boxShadow: 'rgba(0, 0, 0, 0.24) 0px 3px 8px',
+													background: 'linear-gradient(250deg, #f1c7cd 0%, #f1d693 180%)',
 												}}
 											>
 												<div
@@ -241,7 +260,6 @@ const RequestTicket = props => {
 										);
 									})}
 								</div>
-								<InformationButton onClick={closeModal}>close</InformationButton>
 							</Modal>
 							<Modal
 								isOpen={verifiedModalIsOpen}
