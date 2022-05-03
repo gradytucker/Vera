@@ -17,4 +17,4 @@ www.veraworldinnovationday.xyz
 
 - Public services infrastructure and officers can easily onboard to interact with Vera users in a privacy-preserving fashion through ZKP, and as such the potential for Vera as the digital fabric of the future is endless as a scalabe, environmentaly-friendly, universally applicable means of enabling digital applications while maintaining user privacy and compliance.
 
-<img src ="https://github.com/gradytucker/Vera/blob/main/src/assets/images/Vera_Architecture.jpg">
+<img src ="https://github.com/gradytucker/Vera/blob/main/src/assets/images/Vera_Architecture.jpg" align="center">
