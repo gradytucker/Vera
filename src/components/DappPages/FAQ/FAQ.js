@@ -21,6 +21,7 @@ import { Accordion, AccordionItem } from 'react-light-accordion';
 import '../../Theme/accordionStyle.css';
 import topBlur from '../../../assets/images/top-blur.png';
 import VeraArch from '../../../assets/images/Vera_Architecture.png';
+import ctc from '../../../assets/images/copytoclipboard.png';
 
 const topBG = styled.img`
 	position: absolute;
@@ -29,6 +30,12 @@ const topBG = styled.img`
 	bottom: 0;
 	z-index: -1;
 	width: 100%;
+`;
+
+const CopyIcon = styled.img`
+	width: 15px;
+	height: 15px;
+	cursor: pointer;
 `;
 
 const PageWrapper = styled.div`
@@ -247,44 +254,136 @@ const Faq6 = () => (
 		}}
 	>
 		<p style={{ paddingTop: '18px', paddingLeft: '18px', fontSize: '16px' }}>
-			When testing this prototype, add these accounts to your metamask wallet:
+			When testing this prototype, add these accounts to your metamask wallet (ensure that the sample user at
+			least one other account is imported in order to run requests and verifications):
 		</p>
 		<p style={{ paddingTop: '18px', paddingLeft: '18px', fontSize: '16px' }}>police officer:</p>
-		<p style={{ paddingLeft: '18px', paddingRight: '18px' }}>
-			• address: 0x5c9580b38556c8f5c25411a35404f6c618057e32
-		</p>
-		<p style={{ paddingLeft: '18px', paddingRight: '18px' }}>
-			• private key: 0x880192be8ea9a4230a04a510e298767a6f649dd298eeae54375a65a4b2f2a9da
-		</p>
+
+		<div style={{ display: 'flex' }}>
+			<p style={{ paddingLeft: '18px', paddingRight: '18px' }}>
+				• address: 0x5c9580b38556c8f5c25411a35404f6c618057e32
+			</p>
+			<CopyIcon
+				src={ctc}
+				onClick={() => {
+					navigator.clipboard.writeText('0x5c9580b38556c8f5c25411a35404f6c618057e32');
+					alert('copied: 0x5c9580b38556c8f5c25411a35404f6c618057e32 ');
+				}}
+			/>
+		</div>
+		<div style={{ display: 'flex' }}>
+			<p style={{ paddingLeft: '18px', paddingRight: '18px' }}>
+				• private key: 0x880192be8ea9a4230a04a510e298767a6f649dd298eeae54375a65a4b2f2a9da
+			</p>
+			<CopyIcon
+				src={ctc}
+				onClick={() => {
+					navigator.clipboard.writeText('0x880192be8ea9a4230a04a510e298767a6f649dd298eeae54375a65a4b2f2a9da');
+					alert('copied: 0x880192be8ea9a4230a04a510e298767a6f649dd298eeae54375a65a4b2f2a9da ');
+				}}
+			/>
+		</div>
 		<p style={{ paddingTop: '18px', paddingLeft: '18px', fontSize: '16px' }}>paramedic:</p>
-		<p style={{ paddingLeft: '18px', paddingRight: '18px' }}>
-			• address: 0x2f7e17df8dc2db7cada6f18f4b8a7718d5b67391
-		</p>
-		<p style={{ paddingLeft: '18px', paddingRight: '18px' }}>
-			• private key: 0xc1b13e4f205aa3b8bee180a759c34e6b627d3e89934b668b6ad142cb15febe2b
-		</p>
+		<div style={{ display: 'flex' }}>
+			<p style={{ paddingLeft: '18px', paddingRight: '18px' }}>
+				• address: 0x2f7e17df8dc2db7cada6f18f4b8a7718d5b67391
+			</p>
+			<CopyIcon
+				src={ctc}
+				onClick={() => {
+					navigator.clipboard.writeText('0x2f7e17df8dc2db7cada6f18f4b8a7718d5b67391');
+					alert('copied: 0x2f7e17df8dc2db7cada6f18f4b8a7718d5b67391 ');
+				}}
+			/>
+		</div>
+		<div style={{ display: 'flex' }}>
+			<p style={{ paddingLeft: '18px', paddingRight: '18px' }}>
+				• private key: 0xc1b13e4f205aa3b8bee180a759c34e6b627d3e89934b668b6ad142cb15febe2b
+			</p>
+			<CopyIcon
+				src={ctc}
+				onClick={() => {
+					navigator.clipboard.writeText('0xc1b13e4f205aa3b8bee180a759c34e6b627d3e89934b668b6ad142cb15febe2b');
+					alert('copied: 0xc1b13e4f205aa3b8bee180a759c34e6b627d3e89934b668b6ad142cb15febe2b ');
+				}}
+			/>
+		</div>
 		<p style={{ paddingTop: '18px', paddingLeft: '18px', fontSize: '16px' }}>security officer:</p>
-		<p style={{ paddingLeft: '18px', paddingRight: '18px' }}>
-			• address: 0x7a1e966d1bdb4231b82c62e7de59e338c897832d
-		</p>
-		<p style={{ paddingLeft: '18px', paddingRight: '18px' }}>
-			• private key: 0xc8bcbf880b2dafc32ab45aed1dc30c462c3af4314abbbd921e052442f92055e2
-		</p>
+		<div style={{ display: 'flex' }}>
+			<p style={{ paddingLeft: '18px', paddingRight: '18px' }}>
+				• address: 0x7a1e966d1bdb4231b82c62e7de59e338c897832d
+			</p>
+			<CopyIcon
+				src={ctc}
+				onClick={() => {
+					navigator.clipboard.writeText('0x7a1e966d1bdb4231b82c62e7de59e338c897832d');
+					alert('copied: 0x7a1e966d1bdb4231b82c62e7de59e338c897832d ');
+				}}
+			/>
+		</div>
+		<div style={{ display: 'flex' }}>
+			<p style={{ paddingLeft: '18px', paddingRight: '18px' }}>
+				• private key: 0xc8bcbf880b2dafc32ab45aed1dc30c462c3af4314abbbd921e052442f92055e2
+			</p>
+			<CopyIcon
+				src={ctc}
+				onClick={() => {
+					navigator.clipboard.writeText('0xc8bcbf880b2dafc32ab45aed1dc30c462c3af4314abbbd921e052442f92055e2');
+					alert('copied: 0xc8bcbf880b2dafc32ab45aed1dc30c462c3af4314abbbd921e052442f92055e2 ');
+				}}
+			/>
+		</div>
 		<p style={{ paddingTop: '18px', paddingLeft: '18px', fontSize: '16px' }}>pharmacist:</p>
-		<p style={{ paddingLeft: '18px', paddingRight: '18px' }}>
-			{' '}
-			• address: 0x3db35b4b935f39280a6720ac6b1be8ac030d1db6
-		</p>
-		<p style={{ paddingLeft: '18px', paddingRight: '18px' }}>
-			• private key: 0x35676018a65ea8f63c7d4e0bae98845c6742545afd0b842bfd473a307b4f4b3a
-		</p>
-		<p style={{ paddingTop: '18px', paddingLeft: '18px', fontSize: '16px' }}>mock user:</p>
-		<p style={{ paddingLeft: '18px', paddingRight: '18px' }}>
-			• address: 0x17912977c84beaf1f5f228f1dd7782fa6bf7f574
-		</p>
-		<p style={{ paddingLeft: '18px', paddingRight: '18px', paddingBottom: '18px' }}>
-			• private key: 0xa8393d077a13cd68b4fc928b37e93c35f1bfc613597a5c21aeb9ee32f0273ccf
-		</p>
+		<div style={{ display: 'flex' }}>
+			<p style={{ paddingLeft: '18px', paddingRight: '18px' }}>
+				{' '}
+				• address: 0x3db35b4b935f39280a6720ac6b1be8ac030d1db6
+			</p>
+			<CopyIcon
+				src={ctc}
+				onClick={() => {
+					navigator.clipboard.writeText('0x3db35b4b935f39280a6720ac6b1be8ac030d1db6');
+					alert('copied: 0x3db35b4b935f39280a6720ac6b1be8ac030d1db6 ');
+				}}
+			/>
+		</div>
+		<div style={{ display: 'flex' }}>
+			<p style={{ paddingLeft: '18px', paddingRight: '18px' }}>
+				• private key: 0x35676018a65ea8f63c7d4e0bae98845c6742545afd0b842bfd473a307b4f4b3a
+			</p>
+			<CopyIcon
+				src={ctc}
+				onClick={() => {
+					navigator.clipboard.writeText('0x35676018a65ea8f63c7d4e0bae98845c6742545afd0b842bfd473a307b4f4b3a');
+					alert('copied: 0x35676018a65ea8f63c7d4e0bae98845c6742545afd0b842bfd473a307b4f4b3a ');
+				}}
+			/>
+		</div>
+		<p style={{ paddingTop: '18px', paddingLeft: '18px', fontSize: '16px' }}>sample user:</p>
+		<div style={{ display: 'flex' }}>
+			<p style={{ paddingLeft: '18px', paddingRight: '18px' }}>
+				• address: 0x17912977c84beaf1f5f228f1dd7782fa6bf7f574
+			</p>
+			<CopyIcon
+				src={ctc}
+				onClick={() => {
+					navigator.clipboard.writeText('0x17912977c84beaf1f5f228f1dd7782fa6bf7f574');
+					alert('copied: 0x17912977c84beaf1f5f228f1dd7782fa6bf7f574 ');
+				}}
+			/>
+		</div>
+		<div style={{ display: 'flex' }}>
+			<p style={{ paddingLeft: '18px', paddingRight: '18px', paddingBottom: '18px' }}>
+				• private key: 0xa8393d077a13cd68b4fc928b37e93c35f1bfc613597a5c21aeb9ee32f0273ccf
+			</p>
+			<CopyIcon
+				src={ctc}
+				onClick={() => {
+					navigator.clipboard.writeText('0xa8393d077a13cd68b4fc928b37e93c35f1bfc613597a5c21aeb9ee32f0273ccf');
+					alert('copied: 0xa8393d077a13cd68b4fc928b37e93c35f1bfc613597a5c21aeb9ee32f0273ccf ');
+				}}
+			/>
+		</div>
 	</div>
 );
 

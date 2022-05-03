@@ -13,13 +13,11 @@ const StyledButton = styled.button`
 	margin-left: 0px;
 	margin-right: 15px;
 	transition: all 0.2s ease;
-	z-index: 9999;
 	position: relative;
 
 	&:hover {
 		cursor: pointer;
 		background: rgba(255, 255, 255, 0.2);
-		z-index: 9999;
 	}
 `;
 

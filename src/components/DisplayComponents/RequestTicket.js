@@ -15,6 +15,8 @@ import * as contractMethods from '../../contract/contract_methods';
 
 const customStyles = {
 	content: {
+		'z-index': '99999',
+		position: 'fixed',
 		top: '50%',
 		left: '50%',
 		right: 'auto',
@@ -219,6 +221,7 @@ const RequestTicket = props => {
 										flexDirection: 'row',
 										justifyContent: 'space-between',
 										paddingBottom: '10px',
+										overflow: 'hidden',
 										borderBottom: '1px solid #000',
 									}}
 								>
