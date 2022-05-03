@@ -20,7 +20,7 @@ import SkeletonEpoch from '../../skeletonLoads/skeletonEpoch';
 import { Accordion, AccordionItem } from 'react-light-accordion';
 import '../../Theme/accordionStyle.css';
 import topBlur from '../../../assets/images/top-blur.png';
-import VeraArch from '../../../assets/images/Vera_Architecture.png';
+import VeraArch from '../../../assets/images/Vera Architecture.png';
 import ctc from '../../../assets/images/copytoclipboard.png';
 
 const topBG = styled.img`
@@ -261,7 +261,7 @@ const Faq5 = () => (
 				https://dweb.link/ipfs/bafybeigk656jnmzmbcahlrqbj436x5atx625qmeygdu23wky54rbrhquea
 			</a>
 		</p>
-		<p style={{ padding: '18px' }}>You can also view our lastest IPFS hash in our github README.md</p>
+		<p style={{ padding: '18px' }}>You can also view our lastest IPFS hash in our github README.md.</p>
 	</div>
 );
 
