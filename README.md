@@ -14,5 +14,3 @@
 - Vera is a blockchain protocol created to allow users to securely store and access their data on-chain for day-to-day smart city needs such as healthcare, transportation, bank accounts, etc., in a ubiquitous manner through smart devices. Vera accomplishes this while preserving the least exposure principle and full privacy.
 
 - Public services infrastructure and officers can easily onboard to interact with Vera users in a privacy-preserving fashion through ZKP, and as such the potential for Vera as the digital fabric of the future is endless as a scalabe, environmentaly-friendly, universally applicable means of enabling digital applications while maintaining user privacy and compliance.
-
-- This protocol will allow ubiquitous access to real life functionality and data such as pharmacy scripts, taxes, insurance, identification, transport, welfare, police checks and records, COVID vaccination reports, etc. while preserving the least exposure principle and full privacy.
