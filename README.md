@@ -4,6 +4,7 @@
 
 ## UN World Innovation Day Hackathon 2022
 - Challenge 2 - Blockchain for good is the targeted theme.
+- We have aligned our solution with the UN's Sustainable Development Goal #9 - build resilient infrastructure, promote inclusive and sustainable industrilization, and foster innovation.
 
 ## Architecture
 - IPFS hosted frontend built with React.js, web3.js, and Metamask connectivity.
