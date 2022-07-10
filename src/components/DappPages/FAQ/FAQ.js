@@ -2,24 +2,11 @@ import styled from 'styled-components';
 import theme from '../../Theme/theme';
 import bp from '../../Theme/breakpoints';
 import Footer from '../../Navigation/Footer/Footer';
-import blueGlow from '../../../assets/images/BLUE_round.svg';
-import greenGlow from '../../../assets/images/GREEN_round.svg';
 import 'react-responsive-carousel/lib/styles/carousel.min.css'; // requires a loader
-import InformationButton from '../../Button/InformationButton/InformationButton';
-import PrimaryButton from '../../Button/Primary/PrimaryButton';
-import InformationButtonGreyed from '../../Button/InformationButton/InformationButtonGreyed';
-import Countdown from 'react-countdown';
 import 'animate.css/animate.min.css';
-import { AnimationOnScroll } from 'react-animation-on-scroll';
-import lockIcon from '../../../assets/svgs/bountylock.svg';
-import unlockIcon from '../../../assets/svgs/bountyunlock.svg';
-import * as contractMethods from '../../../contract/contract_methods';
 import React from 'react';
-import Web3 from 'web3';
-import SkeletonEpoch from '../../skeletonLoads/skeletonEpoch';
 import { Accordion, AccordionItem } from 'react-light-accordion';
 import '../../Theme/accordionStyle.css';
-import topBlur from '../../../assets/images/top-blur.png';
 import VeraArch from '../../../assets/images/Vera Architecture.png';
 import ctc from '../../../assets/images/copytoclipboard.png';
 
@@ -57,7 +44,7 @@ const PageWrapper = styled.div`
 
 const DappCardWrapper = styled.div`
 	border-radius: 15px;
-	padding: 50px 24px 0 24px;
+	padding:50px 0 0 0;
 	width: 90%;
 	display: flex;
 	flex-direction: column;
@@ -67,6 +54,10 @@ const DappCardWrapper = styled.div`
 	background-color: transparent;
 	margin: 0px auto;
 	margin-bottom: 100px;
+	contain: content;
+	@media ${bp.md} {
+		padding: 50px 24px 0 24px;
+	}
 `;
 
 const PageHeader = styled.div`
@@ -445,7 +436,7 @@ const FAQPage = () => {
 				</PageHeader>
 
 				<DappCardWrapper>
-					<Accordion atomic={true}>
+					<Accordion atomic={true} style={{width: "10%"}}>
 						<AccordionItem title="What is Vera?">
 							<Faq1 />
 						</AccordionItem>

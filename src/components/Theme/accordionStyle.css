@@ -9,6 +9,7 @@
 	border-radius: 30px;
 	border: 1px solid #f3f3f3;
 	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+	width:100%;
 }
 .accordion .accordion-item:first-child .title {
 	border-top-left-radius: 16px;
@@ -18,12 +19,15 @@
 	border-bottom-left-radius: 16px;
 	border-bottom-right-radius: 16px;
 }
+
+
+
 .accordion .accordion-item .title {
 	background-color: #f3f3f3;
 	color: black;
 	font-family: expletus-sans-regular;
 	cursor: pointer;
-	padding: 18px;
+	padding: 22px;
 	width: 100%;
 	font-size: 18px;
 	text-align: left;
