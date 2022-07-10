@@ -21,8 +21,8 @@
 @font-face {
 	font-family: 'expletus-sans-regular';
 	src: local('expletus-sans'), url(./fonts/Gotham/Nunito-VariableFont_wght.ttf) format('truetype');
-	src: local('expletus-sans'), url(./fonts/Gotham/nunito-v24-latin-900.woff) format('truetype');
-	src: local('expletus-sans'), url(./fonts/Gotham/nunito-v24-latin-900.woff2) format('truetype');
+	src: local('expletus-sans'), url(./fonts/Gotham/nunito-v24-latin-300.woff) format('truetype');
+	src: local('expletus-sans'), url(./fonts/Gotham/nunito-v24-latin-300.woff2) format('truetype');
 	font-weight: bold;
 }
 

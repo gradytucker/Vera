@@ -6,7 +6,7 @@ const StyledButton = styled.button`
 	border-radius: 60px;
 	padding: 7px 15px 7px 15px;
 	font-size: 20px;
-	font-family: 'expletus-sans-regular';
+	font-family: 'expletus-sans-bold';
 	margin-left: 20px;
 	transition: all 0.2s ease;
 	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;

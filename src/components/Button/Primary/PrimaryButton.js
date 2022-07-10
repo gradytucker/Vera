@@ -9,7 +9,7 @@ const StyledButton = styled.button`
 	color: ${theme.color.text.button};
 	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 	font-weight: bold;
-	font-family: 'expletus-sans-regular';
+	font-family: 'expletus-sans-bold';
 	border: none;
 	&:hover {
 		cursor: pointer;

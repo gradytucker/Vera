@@ -4,7 +4,7 @@ import theme from '../../Theme/theme';
 const StyledButton = styled.button`
 	color: ${theme.color.text.button};
 	font-weight: bold;
-	font-family: 'expletus-sans-regular';
+	font-family: 'expletus-sans-bold';
 	border: none;
 	background-color: rgba(255, 255, 255, 0.2);
 	border-color: ${theme.color.text.secondary};

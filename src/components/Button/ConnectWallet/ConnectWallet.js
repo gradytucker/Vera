@@ -14,7 +14,7 @@ const StyledButton = styled.button`
 	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 	color: ${theme.color.text.button};
 	font-weight: bold;
-	font-family: 'expletus-sans-regular';
+	font-family: 'expletus-sans-bold';
 	border: none;
 	margin-bottom: 20px;
 	&:hover {
